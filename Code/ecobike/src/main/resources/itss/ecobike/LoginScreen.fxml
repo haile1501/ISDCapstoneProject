@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.controllers.LoginController">
+   <children>
+      <Pane prefHeight="82.0" prefWidth="600.0" style="-fx-background-color: #00a13f; -fx-pref-height: 80; -fx-cursor: pointer;">
+         <children>
+            <ImageView fitHeight="68.0" fitWidth="98.0" layoutX="57.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Label layoutX="265.0" layoutY="114.0" style="-fx-font-weight: bold; -fx-font-size: 20px;" text="LOG IN" />
+      <TextField layoutX="255.0" layoutY="174.0" />
+      <PasswordField layoutX="255.0" layoutY="219.0" />
+      <Button layoutX="355.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: #00a13f; -fx-text-fill: white;" text="Log in" />
+      <Label layoutX="173.0" layoutY="178.0" text="Username" />
+      <Label layoutX="175.0" layoutY="223.0" text="Password" />
+   </children>
+</AnchorPane>
