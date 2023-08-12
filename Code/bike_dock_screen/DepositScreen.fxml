@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.controllers.DepositScreenController">
+    <children>
+        <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane prefHeight="100.0" prefWidth="850.0" style="-fx-background-color: #00a13f;">
+                    <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="80.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/logo.png" />
+                            </image>
+                        </ImageView>
+                        <FontAwesomeIconView fill="WHITE" glyphName="BICYCLE" layoutX="647.0" layoutY="60.0" size="30" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" layoutX="761.0" layoutY="60.0" size="30" />
+                    </children>
+                </Pane>
+            <Pane layoutY="100.0" prefHeight="650.0" prefWidth="850.0">
+               <children>
+                  <Label layoutX="43.0" layoutY="28.0" text="DEPOSIT">
+                     <font>
+                        <Font name="System Bold Italic" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="43.0" layoutY="182.0" text="Barcode">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="43.0" layoutY="237.0" text="Type">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="barCode" layoutX="166.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="51268844126">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="bikeType" layoutX="166.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standard">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="depositFee" layoutX="170.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="400000">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="43.0" layoutY="321.0" text="Deposit fee" underline="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="671.0" layoutY="544.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="120.0" text="Confirm">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="43.0" layoutY="548.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="120.0" text="Return to bike">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Line endX="-88.0" endY="102.0" layoutX="477.0" layoutY="252.0" startX="-88.0" startY="-66.0" />
+                  <TextField layoutX="490.0" layoutY="185.0" promptText="1234 1234 1234 1234" />
+                  <Label layoutX="43.0" layoutY="110.0" text="Summary">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="490.0" layoutY="110.0" text="Card Information">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="490.0" layoutY="231.0" prefHeight="25.0" prefWidth="60.0" promptText="mm" />
+                  <TextField layoutX="490.0" layoutY="278.0" promptText="cvc" />
+                  <TextField layoutX="579.0" layoutY="231.0" prefHeight="25.0" prefWidth="60.0" promptText="yy" />
+                  <TextField layoutX="490.0" layoutY="324.0" promptText="name on card" />
+                  <Text layoutX="560.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
