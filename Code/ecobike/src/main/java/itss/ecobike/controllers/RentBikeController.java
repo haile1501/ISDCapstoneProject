@@ -19,5 +19,4 @@ public class RentBikeController {
             return bikes;
         }
     }
-
 }

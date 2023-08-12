@@ -41,10 +41,11 @@ public class BikeDAO {
         while (rs.next()) {
             Bike bike = new Bike(
                     rs.getString("barcode"),
-                    rs.getInt("battery_percentage"),
-                    rs.getInt("dock_id"),
+                    rs.getInt("bike_type_id"),
                     rs.getString("license_plate"),
-                    rs.getInt("bike_type_id")
+                    rs.getInt("dock_id"),
+                    rs.getInt("battery_percentage"),
+                    rs.getBoolean("is_rented")
             );
             bikeList.add(bike);
         }

@@ -2,19 +2,29 @@ package itss.ecobike.models;
 
 public class Bike {
     private String barcode;
-    private int battery_percentage;
-    private int dock_id;
-    private String license_plate;
-    private int bike_type_id;
+    private int bikeTypeId;
+    private String licensePlate;
+    private int dockId;
+    private int batteryPercentage;
+    private Boolean isRented;
 
-    public Bike(String barcode, int battery_percentage, int dock_id, String license_plate, int bike_type_id) {
+    public Bike(String barcode, int bikeTypeId, String licensePlate, int dockId, int batteryPercentage, Boolean isRented) {
         this.barcode = barcode;
-        this.battery_percentage = battery_percentage;
-        this.dock_id = dock_id;
-        this.license_plate = license_plate;
-        this.bike_type_id = bike_type_id;
+        this.bikeTypeId = bikeTypeId;
+        this.licensePlate = licensePlate;
+        this.dockId = dockId;
+        this.batteryPercentage = batteryPercentage;
+        this.isRented = isRented;
     }
 
+    public Boolean getRented() {
+        return isRented;
+    }
+
+
+    public void setRented(Boolean rented) {
+        isRented = rented;
+    }
     public String getBarcode() {
         return barcode;
     }
@@ -23,35 +33,35 @@ public class Bike {
         this.barcode = barcode;
     }
 
-    public int getBattery_percentage() {
-        return battery_percentage;
+    public int getBatteryPercentage() {
+        return batteryPercentage;
     }
 
-    public void setBattery_percentage(int battery_percentage) {
-        this.battery_percentage = battery_percentage;
+    public void setBatteryPercentage(int batteryPercentage) {
+        this.batteryPercentage = batteryPercentage;
     }
 
-    public int getDock_id() {
-        return dock_id;
+    public int getDockId() {
+        return dockId;
     }
 
-    public void setDock_id(int dock_id) {
-        this.dock_id = dock_id;
+    public void setDockId(int dockId) {
+        this.dockId = dockId;
     }
 
-    public String getLicense_plate() {
-        return license_plate;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setLicense_plate(String license_plate) {
-        this.license_plate = license_plate;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
-    public int getBike_type_id() {
-        return bike_type_id;
+    public int getBikeTypeId() {
+        return bikeTypeId;
     }
 
-    public void setBike_type_id(int bike_type_id) {
-        this.bike_type_id = bike_type_id;
+    public void setBikeTypeId(int bikeTypeId) {
+        this.bikeTypeId = bikeTypeId;
     }
 }
