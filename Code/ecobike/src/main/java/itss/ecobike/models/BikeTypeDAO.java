@@ -34,8 +34,7 @@ public class BikeTypeDAO {
                     rs.getInt("pedal_count"),
                     rs.getInt("rear_seat_count"),
                     rs.getInt("bike_value"),
-                    rs.getDouble("rental_price_multiplier"),
-                    rs.getBoolean("has_electric_motor")
+                    rs.getDouble("rental_price_multiplier")
             );
             bikeTypeList.add(bikeType);
         }

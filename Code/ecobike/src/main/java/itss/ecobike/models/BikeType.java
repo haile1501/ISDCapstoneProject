@@ -9,7 +9,7 @@ public class BikeType {
     private int bikeValue;
     private double rentalPriceMultiplier;
     private boolean hasElectricMotor;
-    public BikeType(int typeId, String typeName, int saddleCount, int pedalCount, int rearSeatCount, int bikeValue, double rentalPriceMultiplier, boolean hasElectricMotor) {
+    public BikeType(int typeId, String typeName, int saddleCount, int pedalCount, int rearSeatCount, int bikeValue, double rentalPriceMultiplier) {
         this.typeId = typeId;
         this.typeName = typeName;
         this.saddleCount = saddleCount;
@@ -74,10 +74,6 @@ public class BikeType {
 
     public void setRentalPriceMultiplier(double rentalPriceMultiplier) {
         this.rentalPriceMultiplier = rentalPriceMultiplier;
-    }
-
-    public boolean isHasElectricMotor() {
-        return hasElectricMotor;
     }
 
     public void setHasElectricMotor(boolean hasElectricMotor) {
