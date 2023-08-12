@@ -3,7 +3,6 @@ package itss.ecobike.models;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import itss.ecobike.utils.DBUtil;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -23,8 +22,20 @@ public class BikeDAO {
         }
     }
 
+    public static ObservableList<Bike> getBikeIsRentedInDock(int dock_id) throws SQLException, ClassNotFoundException {
+        String selectStmt = "SELECT * FROM \"Bike\" WHERE is_rented = true AND dock_id = "+dock_id;
+        try {
+            ResultSet rsBikes = DBUtil.dbExecuteQuery(selectStmt);
+            return getBikeList(rsBikes);
+        } catch (SQLException e) {
+            System.out.println("SQL select operation has been failed: " + e);
+            // Return exception
+            throw e;
+        }
+    }
+
     public static ObservableList<Bike> getBikeByBarCode(String Barcode) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM bike WHERE barcode = "+ Barcode;
+        String selectStmt = "SELECT * FROM \"Bike\" WHERE barcode = "+ Barcode;
         try {
             ResultSet rsBikes = DBUtil.dbExecuteQuery(selectStmt);
 
