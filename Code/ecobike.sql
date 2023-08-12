@@ -47,6 +47,16 @@ SET default_table_access_method = heap;
 -- Name: Bike; Type: TABLE; Schema: public; Owner: postgres
 --
 
+SELECT d.*, COUNT(b.barcode) AS bike_count
+FROM public."Dock" d
+LEFT JOIN public."Bike" b ON d.dock_id = b.dock_id
+GROUP BY d.dock_id;
+
+-- Lấy các row về bike hiện có trong dock
+SELECT d.*, b.*
+FROM public."Dock" d
+LEFT JOIN public."Bike" b ON d.dock_id = b.dock_id;
+
 CREATE TABLE public."Bike" (
     barcode character varying NOT NULL,
     bike_type_id integer,
