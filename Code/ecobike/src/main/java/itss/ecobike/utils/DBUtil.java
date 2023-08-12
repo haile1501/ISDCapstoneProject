@@ -8,7 +8,7 @@ public class DBUtil {
     //Declare JDBC Driver
     private static final String JDBC_DRIVER = "org.postgresql.Driver";
     private static Connection conn = null;
-    private static final String connStr = "jdbc:postgresql://localhost:5433/ecobike";
+    private static final String connStr = "jdbc:postgresql://localhost:5432/ecobike";
     public static void dbConnect() throws SQLException, ClassNotFoundException {
         try {
             Class.forName(JDBC_DRIVER);
@@ -21,7 +21,7 @@ public class DBUtil {
         //Establish the Oracle Connection using Connection String
         try {
             String username = "postgres";
-            String password = "123456789";
+            String password = "Tranduy0";
             conn = DriverManager.getConnection(connStr, username, password);
         } catch (SQLException e) {
             System.out.println("Connection Failed");
