@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class BikeDAO {
 
     public static ObservableList<Bike> searchBikes() throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM bike";
+        String selectStmt = "SELECT * FROM \"Bike\"";
 
         try {
             ResultSet rsBikes = DBUtil.dbExecuteQuery(selectStmt);
@@ -60,7 +60,6 @@ public class BikeDAO {
             );
             bikeList.add(bike);
         }
-        // Return bikeList (ObservableList of Bikes)
         return bikeList;
     }
 }

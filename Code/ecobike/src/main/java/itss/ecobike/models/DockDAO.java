@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class DockDAO {
     public static ObservableList<Dock> searchDocks () throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM dock";
+        String selectStmt = "SELECT * FROM \"Dock\"";
 
         try {
             ResultSet rsDocks = DBUtil.dbExecuteQuery(selectStmt);
