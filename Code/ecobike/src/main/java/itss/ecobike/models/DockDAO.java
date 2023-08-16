@@ -78,7 +78,7 @@ public class DockDAO {
             dock.setAddress(rs.getString("address"));
             dock.setArea(rs.getDouble("area"));
             dock.setDockingPoints(rs.getInt("capacity"));
-            //dock.setAvailableBikes(rs.getInt("available_bikes"));
+//            dock.setAvailableBikes(dockList.filtered(dock).size());
             dockList.add(dock);
         }
         //return dockList (ObservableList of Docks)

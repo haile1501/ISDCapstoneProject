@@ -59,7 +59,7 @@ public class DockScreen {
         ObservableList<Bike> bikes = BikeDAO.getAvailableBikesInDock(dockId);
         for (Bike bike: bikes) {
             FXMLLoader loader = new FXMLLoader();
-            String pathToFxml = "/home/haile/Study/HUST/ITSS/ISDCapstoneProject/Code/ecobike/src/main/resources/itss/ecobike/BikeItem.fxml";
+            String pathToFxml = "./src/main/resources/itss/ecobike/BikeItem.fxml";
             URL bikeItemURL = new File(pathToFxml).toURI().toURL();
             loader.setLocation(bikeItemURL);
             Pane pane = loader.load();
@@ -74,7 +74,7 @@ public class DockScreen {
     private void initialize() {
         back.setOnMouseClicked(mouseEvent -> {
             FXMLLoader loader2 = new FXMLLoader();
-            String pathToFxml2 = "/home/haile/Study/HUST/ITSS/ISDCapstoneProject/Code/ecobike/src/main/resources/itss/ecobike/MainScreen.fxml";
+            String pathToFxml2 = "./src/main/resources/itss/ecobike/MainScreen.fxml";
             URL dockItemURL2 = null;
             try {
                 dockItemURL2 = new File(pathToFxml2).toURI().toURL();

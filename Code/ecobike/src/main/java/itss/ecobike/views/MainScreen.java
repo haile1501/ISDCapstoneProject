@@ -33,14 +33,14 @@ public class MainScreen {
 
         for (Dock dock: docks) {
             FXMLLoader loader = new FXMLLoader();
-            String pathToFxml = "/home/haile/Study/HUST/ITSS/ISDCapstoneProject/Code/ecobike/src/main/resources/itss/ecobike/DockItem.fxml";
+            String pathToFxml = "./src/main/resources/itss/ecobike/DockItem.fxml";
             URL dockItemURL = new File(pathToFxml).toURI().toURL();
             loader.setLocation(dockItemURL);
             HBox pane = loader.load();
             pane.setOnMouseClicked(mouseEvent -> {
                 try {
                     FXMLLoader loader2 = new FXMLLoader();
-                    String pathToFxml2 = "/home/haile/Study/HUST/ITSS/ISDCapstoneProject/Code/ecobike/src/main/resources/itss/ecobike/DockScreen.fxml";
+                    String pathToFxml2 = "./src/main/resources/itss/ecobike/DockScreen.fxml";
                     URL dockItemURL2 = new File(pathToFxml2).toURI().toURL();
                     loader2.setLocation(dockItemURL2);
                     root = loader2.load();

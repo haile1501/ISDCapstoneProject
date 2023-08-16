@@ -16,7 +16,7 @@ public class BikeItem {
     private Label licensePlate;
 
     public void setData(String code, String type, int duration, int battery, String licensePlate) {
-        this.code.setText("Code: " + code);
+        this.code.setText("Barcode: " + code);
         this.type.setText(type);
         if (type.equals("Standard E-bike")) {
             this.duration.setText("Duration: " + duration + " hrs");
@@ -27,6 +27,5 @@ public class BikeItem {
             this.battery.setText("");
             this.licensePlate.setText("");
         }
-
     }
 }
