@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="950.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.DockScreen">
+<AnchorPane prefHeight="950.0" prefWidth="1300.0" style="-fx-cursor: pointer;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.DockScreen">
     <children>
           <Pane prefHeight="101.0" prefWidth="1313.0" style="-fx-background-color: #00a13f;">
               <children>
@@ -41,6 +42,7 @@
                   <Label fx:id="address" prefHeight="19.0" prefWidth="270.0" text="Address:" />
                   <Label fx:id="availableBikes" prefWidth="270.0" text="Available bikes:" />
                   <Label fx:id="emptyDockingPoints" prefWidth="270.0" text="Empty docking points" />
+                  <Label fx:id="area" prefWidth="270.0" text="Area" />
                   <Label fx:id="distance" prefWidth="270.0" text="Distance" />
                   <Label fx:id="walkingTime" prefWidth="270.0" text="Walking time" />
                </children>
@@ -48,8 +50,24 @@
                   <Insets top="60.0" />
                </padding>
             </VBox>
-            <VBox prefHeight="759.0" prefWidth="836.0" />
+            <VBox prefHeight="759.0" prefWidth="836.0">
+               <children>
+                  <ScrollPane prefHeight="759.0" prefWidth="837.0">
+                     <content>
+                        <VBox fx:id="bikesContainer" alignment="TOP_CENTER" prefHeight="184.0" prefWidth="836.0" style="-fx-alignment: center;" />
+                     </content>
+                  </ScrollPane>
+               </children></VBox>
          </children>
       </HBox>
+      <Pane fx:id="back" layoutX="108.0" layoutY="147.0" prefHeight="30.0" prefWidth="32.0">
+         <children>
+            <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="10.0" layoutY="24.0" size="20">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </FontAwesomeIconView>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

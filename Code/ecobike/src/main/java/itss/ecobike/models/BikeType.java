@@ -8,7 +8,6 @@ public class BikeType {
     private int rearSeatCount;
     private int bikeValue;
     private double rentalPriceMultiplier;
-    private boolean hasElectricMotor;
     public BikeType(int typeId, String typeName, int saddleCount, int pedalCount, int rearSeatCount, int bikeValue, double rentalPriceMultiplier) {
         this.typeId = typeId;
         this.typeName = typeName;
@@ -17,7 +16,6 @@ public class BikeType {
         this.rearSeatCount = rearSeatCount;
         this.bikeValue = bikeValue;
         this.rentalPriceMultiplier = rentalPriceMultiplier;
-        this.hasElectricMotor = hasElectricMotor;
     }
 
     public int getTypeId() {
@@ -74,9 +72,5 @@ public class BikeType {
 
     public void setRentalPriceMultiplier(double rentalPriceMultiplier) {
         this.rentalPriceMultiplier = rentalPriceMultiplier;
-    }
-
-    public void setHasElectricMotor(boolean hasElectricMotor) {
-        this.hasElectricMotor = hasElectricMotor;
     }
 }

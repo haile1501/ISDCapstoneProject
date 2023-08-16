@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="163.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.BikeItem">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="173.0" fitWidth="239.0" pickOnBounds="true">
+               <image>
+                  <Image url="@images/bike.jpg" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </HBox>
+      <Label fx:id="licensePlate" layoutX="546.0" layoutY="40.0" text="License plate" />
+      <Label fx:id="battery" layoutX="546.0" layoutY="123.0" text="Battery" />
+      <Label fx:id="duration" layoutX="546.0" layoutY="81.0" text="Duration" />
+      <Label fx:id="type" layoutX="296.0" layoutY="81.0" text="Type" />
+      <Label fx:id="code" layoutX="294.0" layoutY="40.0" text="Code:" />
+   </children>
+</AnchorPane>

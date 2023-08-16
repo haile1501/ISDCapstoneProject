@@ -2,15 +2,15 @@ package itss.ecobike.models;
 
 public class Bike {
     private String barcode;
-    private int bikeTypeId;
+    private BikeType bikeType;
     private String licensePlate;
     private int dockId;
     private int batteryPercentage;
     private Boolean isRented;
 
-    public Bike(String barcode, int bikeTypeId, String licensePlate, int dockId, int batteryPercentage, Boolean isRented) {
+    public Bike(String barcode, BikeType bikeType, String licensePlate, int dockId, int batteryPercentage, Boolean isRented) {
         this.barcode = barcode;
-        this.bikeTypeId = bikeTypeId;
+        this.bikeType = bikeType;
         this.licensePlate = licensePlate;
         this.dockId = dockId;
         this.batteryPercentage = batteryPercentage;
@@ -57,11 +57,11 @@ public class Bike {
         this.licensePlate = licensePlate;
     }
 
-    public int getBikeTypeId() {
-        return bikeTypeId;
+    public BikeType getBikeType() {
+        return bikeType;
     }
 
-    public void setBikeTypeId(int bikeTypeId) {
-        this.bikeTypeId = bikeTypeId;
+    public void setBikeType(BikeType bikeType) {
+        this.bikeType = bikeType;
     }
 }

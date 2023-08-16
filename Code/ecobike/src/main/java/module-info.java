@@ -12,4 +12,5 @@ module itss.ecobike {
     exports itss.ecobike.controllers;
     exports itss.ecobike.models;
     exports itss.ecobike.views;
+    exports itss.ecobike.responses;
 }
