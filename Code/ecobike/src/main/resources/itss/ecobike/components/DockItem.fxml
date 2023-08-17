@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="550.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.components.DockItem">
+<HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="678.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.components.DockItem">
    <children>
       <ImageView fitHeight="153.0" fitWidth="216.0" layoutX="21.0" layoutY="15.0" pickOnBounds="true">
          <image>
             <Image url="@../images/dock.jpg" />
          </image>
       </ImageView>
-      <VBox maxHeight="200.0" maxWidth="200.0" minHeight="100.0" minWidth="200.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+      <VBox maxHeight="200.0" maxWidth="419.0" minHeight="100.0" minWidth="200.0" prefHeight="181.0" prefWidth="419.0" spacing="15.0">
          <children>
-            <Label fx:id="dockName" style="-fx-font-weight: bold;" text="Dock Name">
+            <Label fx:id="dockName" prefHeight="30.0" prefWidth="224.0" style="-fx-font-weight: bold;" text="Dock Name">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="address" text="Address" />
-            <Label text="Available bikes: " fx:id="availableBikes">
+            <Label fx:id="address" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="413.0" text="Address" />
+            <Label fx:id="availableBikes" prefHeight="22.0" prefWidth="218.0" text="Available bikes: ">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

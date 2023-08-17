@@ -37,7 +37,7 @@ public class RentedBikeItem {
     private Scene scene;
     private Parent root;
 
-    public void setData(String code, String type, int duration, int battery, String licensePlate, int rentingTime, int amount) {
+    public void setData(String code, String type, int duration, int battery, String licensePlate, int rentingTime, double amount) {
         this.code.setText("Barcode: " + code);
         this.type.setText(type);
         if (type.equals("Standard E-bike")) {

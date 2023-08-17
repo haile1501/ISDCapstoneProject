@@ -22,7 +22,7 @@
                 <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" layoutX="1189.0" layoutY="62.0" size="30" />
             </children>
         </Pane>
-        <Label layoutX="220.0" layoutY="198.0" text="Select a dock to return bike" fx:id="title">
+        <Label fx:id="title" layoutX="220.0" layoutY="198.0" text="Select a dock to return bike">
             <font>
                 <Font name="System Bold" size="25.0" />
             </font>
@@ -32,9 +32,9 @@
                 <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="8.0" layoutY="26.0" size="20" />
             </children>
         </Pane>
-        <ScrollPane layoutX="295.0" layoutY="277.0" prefHeight="540.0" prefWidth="610.0">
+        <ScrollPane layoutX="217.0" layoutY="279.0" prefHeight="543.0" prefWidth="865.0">
             <content>
-                <VBox fx:id="docksContainer" prefHeight="0.0" prefWidth="710.0" />
+                <VBox fx:id="docksContainer" prefHeight="0.0" prefWidth="871.0" />
             </content>
         </ScrollPane>
     </children>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -106,6 +107,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
+            <Button layoutX="704.0" layoutY="384.0" mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="Confirm" textFill="WHITE" />
          </children>
       </Pane>
     </children>

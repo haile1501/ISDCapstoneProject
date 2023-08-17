@@ -1,8 +1,6 @@
 package itss.ecobike.views;
 
 import itss.ecobike.controllers.RentBikeController;
-import itss.ecobike.models.Bike;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +10,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 

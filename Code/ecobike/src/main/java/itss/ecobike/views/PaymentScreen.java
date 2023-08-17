@@ -25,7 +25,6 @@ public class PaymentScreen {
 
     private String bikeCode;
     public void setData(String bikeCode) {
-        System.out.println(bikeCode);
         this.bikeCode = bikeCode;
         back.setOnMouseClicked(mouseEvent -> {
             FXMLLoader loader2 = new FXMLLoader();
