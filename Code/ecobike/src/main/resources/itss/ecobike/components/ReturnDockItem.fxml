@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="600.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.components.ReturnDockItem">
+    <children>
+        <ImageView fitHeight="153.0" fitWidth="216.0" layoutX="21.0" layoutY="15.0" pickOnBounds="true">
+            <image>
+                <Image url="@../images/dock.jpg" />
+            </image>
+        </ImageView>
+        <VBox maxHeight="200.0" maxWidth="226.0" minHeight="100.0" minWidth="200.0" prefHeight="180.0" prefWidth="230.0" spacing="15.0">
+            <children>
+                <Label fx:id="dockName" style="-fx-font-weight: bold;" text="Dock Name">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label fx:id="address" text="Address" />
+                <Label fx:id="emptyDockingPoints" text="Available bikes: ">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Label>
+            </children>
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+        </VBox>
+      <Button mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="select" textFill="WHITE" fx:id="select"/>
+    </children>
+    <padding>
+        <Insets left="20.0" />
+    </padding>
+</HBox>

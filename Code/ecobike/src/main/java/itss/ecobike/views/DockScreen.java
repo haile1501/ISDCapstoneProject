@@ -59,7 +59,7 @@ public class DockScreen {
         ObservableList<Bike> bikes = BikeDAO.getAvailableBikesInDock(dockId);
         for (Bike bike: bikes) {
             FXMLLoader loader = new FXMLLoader();
-            String pathToFxml = "./src/main/resources/itss/ecobike/BikeItem.fxml";
+            String pathToFxml = "./src/main/resources/itss/ecobike/components/BikeItem.fxml";
             URL bikeItemURL = new File(pathToFxml).toURI().toURL();
             loader.setLocation(bikeItemURL);
             Pane pane = loader.load();

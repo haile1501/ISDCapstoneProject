@@ -11,7 +11,7 @@
          <children>
             <ImageView fitHeight="173.0" fitWidth="239.0" pickOnBounds="true">
                <image>
-                  <Image url="@images/bike.jpg" />
+                  <Image url="@../images/bike.jpg" />
                </image>
             </ImageView>
             <Pane prefHeight="200.0" prefWidth="200.0" />

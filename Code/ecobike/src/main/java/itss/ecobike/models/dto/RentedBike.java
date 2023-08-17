@@ -7,12 +7,19 @@ public class RentedBike extends Bike {
 
     private final int rentingTime;
 
+    private int amount;
+
     public RentedBike(String barcode, BikeType bikeType, String licensePlate, int dockId, int batteryPercentage, Boolean isRented, int rentingTime) {
         super(barcode, bikeType, licensePlate, dockId, batteryPercentage, isRented);
         this.rentingTime = rentingTime;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
     public int getRentingTime() {
         return rentingTime;
     }
+
 }
