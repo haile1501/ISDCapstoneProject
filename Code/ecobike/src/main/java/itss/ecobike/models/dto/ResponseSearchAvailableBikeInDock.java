@@ -1,4 +1,4 @@
-package itss.ecobike.responses;
+package itss.ecobike.models.dto;
 
 public class ResponseSearchAvailableBikeInDock {
     private int dockId;

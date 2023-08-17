@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="550.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.DockItem">
+<HBox alignment="CENTER_LEFT" prefHeight="180.0" prefWidth="550.0" spacing="30.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.components.DockItem">
    <children>
       <ImageView fitHeight="153.0" fitWidth="216.0" layoutX="21.0" layoutY="15.0" pickOnBounds="true">
          <image>
@@ -23,7 +23,7 @@
                </font>
             </Label>
             <Label fx:id="address" text="Address" />
-            <Label text="Available bikes: ">
+            <Label text="Available bikes: " fx:id="availableBikes">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

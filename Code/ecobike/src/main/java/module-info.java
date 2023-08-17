@@ -12,5 +12,7 @@ module itss.ecobike {
     exports itss.ecobike.controllers;
     exports itss.ecobike.models;
     exports itss.ecobike.views;
-    exports itss.ecobike.responses;
+    exports itss.ecobike.models.dto;
+    exports itss.ecobike.views.components;
+    opens itss.ecobike.views.components to javafx.fxml;
 }

@@ -19,7 +19,7 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <FontAwesomeIconView fill="WHITE" glyphName="BICYCLE" layoutX="1089.0" layoutY="60.0" size="30" />
+            <FontAwesomeIconView fill="WHITE" glyphName="BICYCLE" layoutX="1089.0" layoutY="60.0" size="30" fx:id="viewRentedBikes"/>
             <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" layoutX="1189.0" layoutY="62.0" size="30" />
          </children>
       </Pane>

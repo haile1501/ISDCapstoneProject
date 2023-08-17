@@ -1,5 +1,6 @@
 package itss.ecobike.models;
 
+import itss.ecobike.models.dto.RentedBike;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import itss.ecobike.utils.DBUtil;
@@ -11,8 +12,14 @@ public class BikeDAO {
     public static ObservableList<Bike> getBikeIsRentedInDock(int dock_id) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM \"Bike\" WHERE is_rented = true AND dock_id = "+dock_id;
         try {
-            ResultSet rsBikes = DBUtil.dbExecuteQuery(selectStmt);
-            return getBikeList(rsBikes);
+            ResultSet resultSet = DBUtil.dbExecuteQuery(selectStmt);
+            ObservableList<Bike> bikeList = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+                bikeList.add(getBikeFromDBRow(resultSet));
+            }
+            // Return bikeList (ObservableList of Bikes)
+            return bikeList;
         } catch (SQLException e) {
             System.out.println("SQL select operation has been failed: " + e);
             // Return exception
@@ -23,9 +30,15 @@ public class BikeDAO {
     public static ObservableList<Bike> getBikeByBarCode(String Barcode) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM \"Bike\" WHERE barcode = "+ Barcode;
         try {
-            ResultSet rsBikes = DBUtil.dbExecuteQuery(selectStmt);
+            ResultSet resultSet = DBUtil.dbExecuteQuery(selectStmt);
 
-            return getBikeList(rsBikes);
+            ObservableList<Bike> bikeList = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+                bikeList.add(getBikeFromDBRow(resultSet));
+            }
+            // Return bikeList (ObservableList of Bikes)
+            return bikeList;
         } catch (SQLException e) {
             System.out.println("SQL select operation has been failed: " + e);
             // Return exception
@@ -38,7 +51,14 @@ public class BikeDAO {
         try {
             ResultSet resultSet = DBUtil.dbExecuteQuery(stm);
 
-            return getBikeList(resultSet);
+            ObservableList<Bike> bikeList = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+                bikeList.add(getBikeFromDBRow(resultSet));
+            }
+            // Return bikeList (ObservableList of Bikes)
+            return bikeList;
+
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("SQL select operation has been failed: " + e);
             // Return exception
@@ -46,14 +66,48 @@ public class BikeDAO {
         }
     }
 
-    private static ObservableList<Bike> getBikeList(ResultSet rs) throws SQLException, ClassNotFoundException {
-        ObservableList<Bike> bikeList = FXCollections.observableArrayList();
+    public static ObservableList<RentedBike> getRentedBikes() throws SQLException, ClassNotFoundException {
+        String stm = "select b.*, bt.*, ceil(EXTRACT(EPOCH FROM AGE(NOW(), start_time)) / 60) AS renting_time\n" +
+                " from public.\"Bike\" b, public.\"BikeType\" bt, public.\"Rental\" r\n" +
+                " where is_rented = true and b.bike_type_id = bt.type_id\n" +
+                " and r.bike_barcode = b.barcode;\n";
+        try {
+            ResultSet resultSet = DBUtil.dbExecuteQuery(stm);
 
-        while (rs.next()) {
-            bikeList.add(getBikeFromDBRow(rs));
+            ObservableList<RentedBike> bikeList = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+                bikeList.add(getRentedBikeFromDBRow(resultSet));
+            }
+            // Return bikeList (ObservableList of Bikes)
+            return bikeList;
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("SQL select operation has been failed: " + e);
+            // Return exception
+            throw e;
         }
-        // Return bikeList (ObservableList of Bikes)
-        return bikeList;
+    }
+
+    private static RentedBike getRentedBikeFromDBRow(ResultSet rs) throws  SQLException, ClassNotFoundException {
+        BikeType bikeType = new BikeType(
+                rs.getInt("type_id"),
+                rs.getString("type_name"),
+                rs.getInt("saddle_count"),
+                rs.getInt("pedal_count"),
+                rs.getInt("rear_seat_count"),
+                rs.getInt("bike_value"),
+                rs.getDouble("rental_price_multiplier")
+        );
+
+        return new RentedBike(
+                rs.getString("barcode"),
+                bikeType,
+                rs.getString("license_plate"),
+                rs.getInt("dock_id"),
+                rs.getInt("battery_percentage"),
+                rs.getBoolean("is_rented"),
+                rs.getInt("renting_time")
+        );
     }
 
     private static Bike getBikeFromDBRow(ResultSet rs) throws SQLException, ClassNotFoundException {

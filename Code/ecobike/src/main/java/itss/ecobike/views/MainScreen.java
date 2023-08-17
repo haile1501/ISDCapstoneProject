@@ -1,7 +1,10 @@
 package itss.ecobike.views;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import itss.ecobike.models.Dock;
 import itss.ecobike.models.DockDAO;
+import itss.ecobike.views.components.DockItem;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +33,9 @@ public class MainScreen {
     @FXML
     private TextField searchInput;
 
+    @FXML
+    private FontAwesomeIconView viewRentedBikes;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -37,6 +43,27 @@ public class MainScreen {
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException, IOException {
         ObservableList<Dock> docks = DockDAO.searchDocks("");
+
+        viewRentedBikes.setOnMouseClicked(mouseEvent -> {
+            FXMLLoader loader2 = new FXMLLoader();
+            String pathToFxml2 = "./src/main/resources/itss/ecobike/RentedBikes.fxml";
+            URL dockItemURL2 = null;
+            try {
+                dockItemURL2 = new File(pathToFxml2).toURI().toURL();
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+            loader2.setLocation(dockItemURL2);
+            try {
+                root = loader2.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            scene = new Scene(root);
+            stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        });
 
         searchButton.setOnMouseClicked(mouseEvent -> {
             String searchText = searchInput.getText();
@@ -52,6 +79,7 @@ public class MainScreen {
     }
 
     private void renderDocks(ObservableList<Dock> docks) throws IOException {
+        docksContainer.getChildren().clear();
         for (Dock dock: docks) {
             FXMLLoader loader = new FXMLLoader();
             String pathToFxml = "./src/main/resources/itss/ecobike/DockItem.fxml";

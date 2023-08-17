@@ -21,7 +21,6 @@
                           <Image url="@images/logo.png" />
                       </image>
                   </ImageView>
-                  <FontAwesomeIconView fill="WHITE" glyphName="BICYCLE" layoutX="1117.0" layoutY="61.0" size="30" />
                   <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" layoutX="1224.0" layoutY="59.0" size="30" />
               </children>
           </Pane>

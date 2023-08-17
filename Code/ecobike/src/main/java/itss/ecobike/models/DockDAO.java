@@ -1,6 +1,5 @@
 package itss.ecobike.models;
 
-import itss.ecobike.responses.ResponseSearchAvailableBikeInDock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import itss.ecobike.utils.DBUtil;
@@ -10,7 +9,13 @@ import java.sql.SQLException;
 
 public class DockDAO {
     public static ObservableList<Dock> searchDocks (String searchInput) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM public.\"Dock\"";
+        String selectStmt = "select d.*, b.available_bikes\n" +
+                "from public.\"Dock\" d left join (select count(b.barcode) as available_bikes, dock_id \n" +
+                " from public.\"Bike\" b \n" +
+                " where is_rented = false\n" +
+                " group by dock_id) b\n" +
+                " on d.dock_id = b.dock_id" +
+                " where dock_name like '%" + searchInput + "%' or address like '%" + searchInput + "%'";
 
         try {
             ResultSet rsDocks = DBUtil.dbExecuteQuery(selectStmt);
@@ -18,56 +23,28 @@ public class DockDAO {
             return getDockList(rsDocks);
         } catch (SQLException e) {
             System.out.println("SQL select operation has been failed: " + e);
-            //Return exception
             throw e;
         }
     }
 
     public static Dock getDockById(int dockId) throws SQLException, ClassNotFoundException {
-        String stm = "SELECT * FROM public.\"Dock\" where dock_id = " + dockId;
+        String stm = "select d.*, b.available_bikes\n" +
+                "from public.\"Dock\" d left join (select count(b.barcode) as available_bikes, dock_id \n" +
+                " from public.\"Bike\" b \n" +
+                " where is_rented = false\n" +
+                " group by dock_id) b\n" +
+                " on d.dock_id = b.dock_id" +
+                " where d.dock_id = " + dockId;
         try {
             ResultSet rsDocks = DBUtil.dbExecuteQuery(stm);
 
             return getDockList(rsDocks).get(0);
         } catch (SQLException e) {
             System.out.println("SQL select operation has been failed: " + e);
-            //Return exception
             throw e;
         }
     }
-//    public static ObservableList<ResponseSearchAvailableBikeInDock> searchBikeInDock (int dock_id) throws SQLException, ClassNotFoundException {
-//        String selectStmt = "SELECT d.dock_id, d.dock_name, d.address, d.area, d.capacity, COUNT(b.barcode) AS available_bikes\n" +
-//                "FROM public.\"Dock\" d\n" +
-//                "LEFT JOIN public.\"Bike\" b ON d.dock_id = b.dock_id\n" +
-//                "GROUP BY d.dock_id, d.dock_name, d.address, d.area, d.capacity\n" +
-//                "ORDER BY d.dock_id;\n ";
-//
-//        try {
-//            ResultSet rs = DBUtil.dbExecuteQuery(selectStmt);
-//            return responseSearchAvailableBikeInDocksBikeInDock(rs);
-//        } catch (SQLException e) {
-//            System.out.println("SQL select operation has been failed: " + e);
-//            //Return exception
-//            throw e;
-//        }
-//    }
 
-//    private static Dock responseSearchAvailableBikeInDocksBikeInDock(ResultSet rs) throws SQLException, ClassNotFoundException {
-//        ObservableList<ResponseSearchAvailableBikeInDock> responses = FXCollections.observableArrayList();
-//
-//        while (rs.next()) {
-//            int dockId = rs.getInt("dock_id");
-//            String dockName = rs.getString("dock_name");
-//            String address = rs.getString("address");
-//            int area = rs.getInt("area");
-//            int capacity = rs.getInt("capacity");
-//            int availableBikes = rs.getInt("available_bikes"); // This should be the alias from your query
-//
-//            ResponseSearchAvailableBikeInDock response = new ResponseSearchAvailableBikeInDock(dockId, dockName, address, area, capacity, availableBikes);
-//            responses.add(response);
-//        }
-//        return responses;
-//    }
     private static ObservableList<Dock> getDockList(ResultSet rs) throws SQLException, ClassNotFoundException {
         ObservableList<Dock> dockList = FXCollections.observableArrayList();
 
@@ -78,10 +55,10 @@ public class DockDAO {
             dock.setAddress(rs.getString("address"));
             dock.setArea(rs.getDouble("area"));
             dock.setDockingPoints(rs.getInt("capacity"));
-//            dock.setAvailableBikes(dockList.filtered(dock).size());
+            dock.setAvailableBikes(rs.getInt("available_bikes"));
             dockList.add(dock);
         }
-        //return dockList (ObservableList of Docks)
+
         return dockList;
     }
 }

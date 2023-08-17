@@ -1,4 +1,4 @@
-package itss.ecobike.views;
+package itss.ecobike.views.components;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

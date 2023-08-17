@@ -1,4 +1,4 @@
-package itss.ecobike.views;
+package itss.ecobike.views.components;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -6,13 +6,13 @@ import org.w3c.dom.events.MouseEvent;
 
 public class DockItem {
     @FXML
-    private Label dockName = new Label();
+    private Label dockName;
 
     @FXML
-    private Label address = new Label();
+    private Label address;
 
     @FXML
-    private Label availableBikes = new Label();
+    private Label availableBikes;
 
     public void setData(String dockNameData, String addressData, int availableBikesData) {
         dockName.setText(dockNameData);

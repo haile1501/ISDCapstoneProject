@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.StackPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.RentedBikes">
+    <children>
+        <Pane prefHeight="102.0" prefWidth="1300.0" style="-fx-background-color: #00a13f;">
+            <children>
+                <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="80.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/logo.png" />
+                    </image>
+                </ImageView>
+                <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" layoutX="1189.0" layoutY="62.0" size="30" />
+            </children>
+        </Pane>
+      <ScrollPane layoutX="221.0" layoutY="239.0" prefHeight="600.0" prefWidth="858.0">
+         <content>
+            <VBox fx:id="rentedBikesContainer" prefHeight="58.0" prefWidth="770.0" />
+         </content>
+      </ScrollPane>
+      <Label layoutX="221.0" layoutY="177.0" text="Rented bikes">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Pane fx:id="back" layoutX="210.0" layoutY="132.0" prefHeight="38.0" prefWidth="34.0">
+         <children>
+            <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="8.0" layoutY="26.0" size="20" />
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
