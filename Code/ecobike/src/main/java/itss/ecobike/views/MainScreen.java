@@ -8,12 +8,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 
@@ -21,16 +24,34 @@ public class MainScreen {
     @FXML
     private VBox docksContainer;
 
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private TextField searchInput;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
 
-
-
     @FXML
     private void initialize() throws SQLException, ClassNotFoundException, IOException {
-        ObservableList<Dock> docks = DockDAO.searchDocks();
+        ObservableList<Dock> docks = DockDAO.searchDocks("");
 
+        searchButton.setOnMouseClicked(mouseEvent -> {
+            String searchText = searchInput.getText();
+            try {
+                ObservableList<Dock> docks2 = DockDAO.searchDocks(searchText);
+                renderDocks(docks2);
+            } catch (SQLException | ClassNotFoundException | IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        renderDocks(docks);
+    }
+
+    private void renderDocks(ObservableList<Dock> docks) throws IOException {
         for (Dock dock: docks) {
             FXMLLoader loader = new FXMLLoader();
             String pathToFxml = "./src/main/resources/itss/ecobike/DockItem.fxml";
@@ -47,6 +68,7 @@ public class MainScreen {
                     DockScreen dockScreen = loader2.getController();
                     dockScreen.setData(dock.getId());
                     scene = new Scene(root);
+                    
                     stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
                     stage.setScene(scene);
                     stage.setUserData(dock.getId());
@@ -59,6 +81,5 @@ public class MainScreen {
             dockItem.setData(dock.getDockName(), dock.getAddress(), dock.getAvailableBikes());
             docksContainer.getChildren().add(pane);
         }
-
     }
 }

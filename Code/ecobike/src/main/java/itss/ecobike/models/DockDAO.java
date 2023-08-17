@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DockDAO {
-    public static ObservableList<Dock> searchDocks () throws SQLException, ClassNotFoundException {
+    public static ObservableList<Dock> searchDocks (String searchInput) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM public.\"Dock\"";
 
         try {

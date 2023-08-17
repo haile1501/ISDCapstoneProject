@@ -25,8 +25,8 @@
       </Pane>
       <Pane layoutX="336.0" layoutY="145.0" prefHeight="82.0" prefWidth="627.0">
          <children>
-            <TextField layoutX="-42.0" layoutY="28.0" prefHeight="26.0" prefWidth="303.0" />
-            <Button layoutX="274.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="Search" textFill="WHITE" />
+            <TextField layoutX="-42.0" layoutY="28.0" prefHeight="26.0" prefWidth="303.0" fx:id="searchInput"/>
+            <Button layoutX="274.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="Search" textFill="WHITE" fx:id="searchButton"/>
             <TextField layoutX="381.0" layoutY="28.0" prefHeight="26.0" prefWidth="217.0" />
             <Button layoutX="613.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="Scan" textFill="WHITE" />
          </children>
