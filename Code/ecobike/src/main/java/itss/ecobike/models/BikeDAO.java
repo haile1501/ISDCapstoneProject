@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class BikeDAO {
 
-    public static ObservableList<Bike> getBikeIsRentedInDock(int dock_id) throws SQLException, ClassNotFoundException {
+    public static ObservableList<Bike> getRentedBikesInDock(int dock_id) throws SQLException, ClassNotFoundException {
         String selectStmt = "SELECT * FROM \"Bike\" WHERE is_rented = true AND dock_id = "+dock_id;
         try {
             ResultSet resultSet = DBUtil.dbExecuteQuery(selectStmt);
@@ -28,14 +28,14 @@ public class BikeDAO {
     }
 
     public static ObservableList<Bike> getBikeByBarCode(String Barcode) throws SQLException, ClassNotFoundException {
-        String selectStmt = "SELECT * FROM \"Bike\" WHERE barcode = "+ Barcode;
+        String selectStmt = "SELECT * FROM public.\"Bike\" b INNER JOIN public.\"BikeType\" bt ON b.bike_type_id = bt.type_id WHERE barcode = '" + Barcode + "';";
         try {
-            ResultSet resultSet = DBUtil.dbExecuteQuery(selectStmt);
+            ResultSet rsBikes = DBUtil.dbExecuteQuery(selectStmt);
 
             ObservableList<Bike> bikeList = FXCollections.observableArrayList();
 
-            while (resultSet.next()) {
-                bikeList.add(getBikeFromDBRow(resultSet));
+            while (rsBikes.next()) {
+                bikeList.add(getBikeFromDBRow(rsBikes));
             }
             // Return bikeList (ObservableList of Bikes)
             return bikeList;

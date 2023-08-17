@@ -7,11 +7,11 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.controllers.BikeInfoScreenController">
+<AnchorPane prefHeight="950.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.BikeInfoScreen">
     <children>
         <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Pane prefHeight="100.0" prefWidth="850.0" style="-fx-background-color: #00a13f;">
+                <Pane prefHeight="100.0" prefWidth="1300.0" style="-fx-background-color: #00a13f;">
                     <children>
                         <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="80.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -22,102 +22,102 @@
                         <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" layoutX="761.0" layoutY="60.0" size="30" />
                     </children>
                 </Pane>
-            <Pane layoutY="100.0" prefHeight="650.0" prefWidth="850.0">
+            <Pane layoutY="100.0" prefHeight="850.0" prefWidth="1300.0">
                <children>
-                  <Label layoutX="43.0" layoutY="28.0" text="BIKE INFOMATION">
+                  <Label layoutX="281.0" layoutY="109.0" text="BIKE INFOMATION">
                      <font>
                         <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="265.0" fitWidth="388.0" layoutX="43.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="265.0" fitWidth="388.0" layoutX="281.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/bike.jpg" />
                      </image></ImageView>
-                  <Label layoutX="344.0" layoutY="102.0" text="Barcode">
+                  <Label layoutX="582.0" layoutY="183.0" text="Barcode">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="344.0" layoutY="144.0" text="License plate">
+                  <Label layoutX="582.0" layoutY="225.0" text="License plate">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="344.0" layoutY="187.0" text="Type">
+                  <Label layoutX="582.0" layoutY="268.0" text="Type">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="343.0" layoutY="235.0" text="Dock">
+                  <Label layoutX="581.0" layoutY="316.0" text="Dock">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Text fx:id="barCode" layoutX="477.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="51268844126">
+                  <Text fx:id="barcode" layoutX="715.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="51268844126">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="licensePlate" layoutX="477.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M5-21">
+                  <Text fx:id="licensePlate" layoutX="715.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M5-21">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="bikeType" layoutX="477.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standard">
+                  <Text fx:id="bikeType" layoutX="715.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standard">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="dockName" layoutX="477.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bach Khoa">
+                  <Text fx:id="dockName" layoutX="715.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bach Khoa">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Label layoutX="499.0" layoutY="350.0" text="Electric motor integrated" />
-                  <Label layoutX="499.0" layoutY="317.0" text="Rear seat" />
-                  <Label layoutX="343.0" layoutY="350.0" text="Pedal" />
-                  <Label layoutX="343.0" layoutY="317.0" text="Saddle" />
-                  <Text fx:id="saddleCount" layoutX="404.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                  <Label layoutX="737.0" layoutY="431.0" text="Battery" />
+                  <Label layoutX="737.0" layoutY="398.0" text="Rear seat" />
+                  <Label layoutX="581.0" layoutY="431.0" text="Pedal" />
+                  <Label layoutX="581.0" layoutY="398.0" text="Saddle" />
+                  <Text fx:id="saddleCount" layoutX="642.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Text fx:id="pedalCount" layoutX="404.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                  <Text fx:id="pedalCount" layoutX="642.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Text fx:id="rearSeatCount" layoutX="654.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                  <Text fx:id="rearSeatCount" layoutX="892.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Text fx:id="hasElectricMotor" layoutX="654.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No">
+                  <Text fx:id="batteryPercentage" layoutX="892.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Text fx:id="depositFee" layoutX="438.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="400000">
+                  <Text fx:id="depositFee" layoutX="676.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="400000">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Label layoutX="257.0" layoutY="464.0" text="Deposit fee" underline="true">
+                  <Label layoutX="495.0" layoutY="545.0" text="Deposit fee" underline="true">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button layoutX="671.0" layoutY="544.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="120.0" text="Rent this bike">
+                  <Button fx:id="rentButton" layoutX="1100.0" layoutY="750.0" mnemonicParsing="false" onAction="#proceedToDepositScreen" prefHeight="57.0" prefWidth="120.0" text="Rent this bike">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="43.0" layoutY="548.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="120.0" text="Return to dock">
+                  <Button fx:id="backButton" layoutX="50.0" layoutY="750.0" mnemonicParsing="false" onAction="#returnToMainScreen" prefHeight="57.0" prefWidth="120.0" text="Back">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Line endX="-332.0" endY="312.0" layoutX="379.0" layoutY="87.0" startX="401.0" startY="312.0" />
+                  <Line endX="-332.0" endY="312.0" layoutX="617.0" layoutY="168.0" startX="401.0" startY="312.0" />
                </children>
             </Pane>
             </children>

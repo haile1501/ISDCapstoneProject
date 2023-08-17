@@ -2,6 +2,8 @@ package itss.ecobike.views;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import itss.ecobike.controllers.RentBikeController;
+import itss.ecobike.models.Bike;
 import itss.ecobike.models.Dock;
 import itss.ecobike.models.DockDAO;
 import itss.ecobike.views.components.DockItem;
@@ -11,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -36,12 +39,15 @@ public class MainScreen {
     @FXML
     private FontAwesomeIconView viewRentedBikes;
 
+    @FXML
+    private TextField barcode;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     @FXML
-    private void initialize() throws SQLException, ClassNotFoundException, IOException {
+    protected void initialize() throws SQLException, ClassNotFoundException, IOException {
         ObservableList<Dock> docks = DockDAO.searchDocks("");
 
         viewRentedBikes.setOnMouseClicked(mouseEvent -> {
@@ -109,5 +115,47 @@ public class MainScreen {
             dockItem.setData(dock.getDockName(), dock.getAddress(), dock.getAvailableBikes());
             docksContainer.getChildren().add(pane);
         }
+    }
+
+    @FXML
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Scan barcode failed");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void processScanBarcode() throws SQLException, ClassNotFoundException, IOException {
+        String barcodeText = barcode.getText();
+        if (barcodeText.isEmpty()) {
+            showErrorAlert("Barcode is blank");
+            return;
+        }
+        ObservableList<Bike> bike = null;
+        try {
+            bike = RentBikeController.validateBarCode(barcodeText);
+        } catch (SQLException e) {
+            showErrorAlert(e.getMessage());
+            return;
+        }
+        if (bike.get(0).getRented()) {
+            showErrorAlert("Bike is already rented");
+            return;
+        }
+//        System.out.println(bike.get(0).getClass().getName());
+        // move to BikeInfoScreen.fxml
+        FXMLLoader loader = new FXMLLoader();
+        String pathToFxml = "./src/main/resources/itss/ecobike/BikeInfoScreen.fxml";
+        URL bikeInfoItemURL = new File(pathToFxml).toURI().toURL();
+        loader.setLocation(bikeInfoItemURL);
+        root = loader.load();
+        BikeInfoScreen bikeInfoScreen = loader.getController();
+        bikeInfoScreen.setData(bike.get(0));
+        scene = new Scene(root);
+        stage = (Stage)barcode.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }
