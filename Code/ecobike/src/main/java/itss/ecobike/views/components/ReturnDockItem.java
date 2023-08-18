@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLException;
 
 public class ReturnDockItem {
     @FXML
@@ -51,7 +52,7 @@ public class ReturnDockItem {
                 root = loader2.load();
                 PaymentScreen controller = loader2.getController();
                 controller.setData(bikeCode);
-            } catch (IOException e) {
+            } catch (IOException | SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
             scene = new Scene(root);

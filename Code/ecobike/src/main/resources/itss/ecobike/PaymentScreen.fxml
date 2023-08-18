@@ -3,7 +3,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -67,7 +66,6 @@
                  </font>
              </Label>
              <Line endX="-88.0" endY="197.09490966796875" layoutX="535.0" layoutY="147.0" startX="-88.0" startY="-66.0" />
-             <TextField layoutX="585.0" layoutY="124.0" promptText="1234 1234 1234 1234" />
              <Label layoutX="17.0" layoutY="40.0" text="Summary">
                  <font>
                      <Font size="24.0" />
@@ -78,16 +76,7 @@
                      <Font size="24.0" />
                  </font>
              </Label>
-             <TextField layoutX="585.0" layoutY="170.0" prefHeight="25.0" prefWidth="60.0" promptText="mm" />
-             <TextField layoutX="585.0" layoutY="217.0" promptText="cvc" />
-             <TextField layoutX="674.0" layoutY="170.0" prefHeight="25.0" prefWidth="60.0" promptText="yy" />
-             <TextField layoutX="585.0" layoutY="263.0" promptText="name on card" />
-             <Text layoutX="655.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
-                 <font>
-                     <Font size="20.0" />
-                 </font>
-             </Text>
-            <Text fx:id="depositFee2" layoutX="181.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="40 minutes">
+            <Text fx:id="rentingTime" layoutX="181.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="40 minutes">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -102,12 +91,22 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Text fx:id="depositFee1" layoutX="182.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="400000">
+            <Text fx:id="rentalAmount" layoutX="182.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="400000">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Button layoutX="704.0" layoutY="384.0" mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="Confirm" textFill="WHITE" />
+            <Button fx:id="confirm" layoutX="780.0" layoutY="384.0" mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="Confirm" textFill="WHITE" />
+            <Label layoutX="528.0" layoutY="113.0" text="Card number">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text fx:id="cardNumber" layoutX="727.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="51268844126">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
     </children>

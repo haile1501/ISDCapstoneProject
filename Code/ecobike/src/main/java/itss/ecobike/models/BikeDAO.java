@@ -76,6 +76,7 @@ public class BikeDAO {
         String stm = "select b.*, bt.*, ceil(EXTRACT(EPOCH FROM AGE(NOW(), start_time)) / 60) AS renting_time\n" +
                 " from public.\"Bike\" b, public.\"BikeType\" bt, public.\"Rental\" r\n" +
                 " where is_rented = true and b.bike_type_id = bt.type_id\n" +
+                " and r.end_time is null" +
                 " and r.bike_barcode = b.barcode;\n";
         try {
             ResultSet resultSet = DBUtil.dbExecuteQuery(stm);
@@ -135,5 +136,10 @@ public class BikeDAO {
                 rs.getInt("battery_percentage"),
                 rs.getBoolean("is_rented")
         );
+    }
+
+    public static void returnBike(String barcode) throws SQLException, ClassNotFoundException {
+        String stm = "update public.\"Bike\" set is_rented = false where barcode = '" + barcode + "'";
+        DBUtil.dbExecuteUpdate(stm);
     }
 }
