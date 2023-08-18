@@ -1,5 +1,7 @@
 package itss.ecobike.models.dto;
 
+import itss.ecobike.models.RentalStrategy;
+
 public class RentalInfo {
     private int rentalId;
     private String barCode;
@@ -8,6 +10,18 @@ public class RentalInfo {
     private double amount;
     private int rentingTime;
     private String cardNumber;
+
+    private RentalStrategy rentalStrategy;
+
+    public RentalStrategy getRentalStrategy() {
+        return rentalStrategy;
+    }
+
+    public void setRentalStrategy(RentalStrategy rentalStrategy) {
+        this.rentalStrategy = rentalStrategy;
+    }
+
+
 
     public String getBarCode() {
         return barCode;
@@ -34,7 +48,7 @@ public class RentalInfo {
     }
 
     public double getAmount() {
-        return amount;
+        return this.amount;
     }
 
     public void setAmount(double amount) {

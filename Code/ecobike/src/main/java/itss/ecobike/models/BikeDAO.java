@@ -138,8 +138,8 @@ public class BikeDAO {
         );
     }
 
-    public static void returnBike(String barcode) throws SQLException, ClassNotFoundException {
-        String stm = "update public.\"Bike\" set is_rented = false where barcode = '" + barcode + "'";
+    public static void returnBike(String barcode, int returnDockId) throws SQLException, ClassNotFoundException {
+        String stm = "update public.\"Bike\" set is_rented = false, dock_id = " + returnDockId + " where barcode = '" + barcode + "'";
         DBUtil.dbExecuteUpdate(stm);
     }
 }

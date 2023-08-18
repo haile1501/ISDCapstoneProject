@@ -13,7 +13,7 @@ public class Rental {
     private final Date endTime;
 
     public Rental(int rentalId, String bikeBarCode, String customerName, int cardNumber, int rentDock, int returnDock, Date startTime, Date endTime) {
-        RentalId = rentalId;
+        this.RentalId = rentalId;
         this.bikeBarCode = bikeBarCode;
         this.customerName = customerName;
         this.cardNumber = cardNumber;

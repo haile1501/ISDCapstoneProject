@@ -54,7 +54,7 @@ public class CreditCard {
         this.setCardHolderName(cardHolderName);
         this.setCardNumber(cardNumber);
         this.setCardSecurity(cardSecurity);
-        this.setExpirationDate(expYear, expMonth + 1);
+        this.setExpirationDate(expYear, expMonth);
         this.setBalance(1_000_000);
     }
 

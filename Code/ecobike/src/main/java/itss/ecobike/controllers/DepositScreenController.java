@@ -5,8 +5,10 @@ import itss.ecobike.models.*;
 public class DepositScreenController {
     public static Transaction processDeposit(CreditCard creditCard, String barcode, String depositFee) throws Exception{
         EcoBank bank = new EcoBank();
-        if (!bank.validatePaymentInfo(creditCard, Double.parseDouble(depositFee))) {
-            throw new Exception("Invalid payment information");
+        try {
+            bank.validatePaymentInfo(creditCard, Double.parseDouble(depositFee));
+        } catch (Exception e){
+            throw new Exception("Error occurred while validating credit card: " + e);
         }
         System.out.println("Valid payment information");
         int rental_id = -1;

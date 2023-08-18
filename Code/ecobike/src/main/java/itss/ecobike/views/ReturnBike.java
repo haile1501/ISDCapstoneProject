@@ -70,7 +70,7 @@ public class ReturnBike {
             loader.setLocation(dockItemURL);
             HBox pane = loader.load();
             ReturnDockItem dockItem = loader.getController();
-            dockItem.setData(dock.getDockName(), dock.getAddress(), dock.getDockingPoints() - dock.getAvailableBikes(), bikeCode);
+            dockItem.setData(dock.getId(), dock.getDockName(), dock.getAddress(), dock.getDockingPoints() - dock.getAvailableBikes(), bikeCode);
             docksContainer.getChildren().add(pane);
         }
     }

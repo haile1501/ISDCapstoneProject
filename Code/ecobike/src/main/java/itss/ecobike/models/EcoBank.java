@@ -1,6 +1,9 @@
 package itss.ecobike.models;
 
+import itss.ecobike.exceptions.ExpiredCreditCard;
+import itss.ecobike.exceptions.InvalidCardInfo;
 import itss.ecobike.exceptions.NotEnoughBalanceException;
+import itss.ecobike.exceptions.NullCreditCard;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -14,21 +17,25 @@ public class EcoBank implements Interbank{
         return expireDate.isBefore(currentLocalDate);
     }
     @Override
-    public boolean validatePaymentInfo(CreditCard creditCard, double amount){
+    public boolean validatePaymentInfo(CreditCard creditCard, double amount) throws Exception{
         if (creditCard == null){
-            return false;
+            throw new NullCreditCard();
+        }
+        if (!"139396_group5_2023".equals(creditCard.getCardHolderName())){
+            throw new InvalidCardInfo();
         }
         if (isExpired(creditCard)){
-            return false;
+            throw new ExpiredCreditCard();
         }
-        return !(creditCard.getBalance() < amount);
+        if (creditCard.getBalance() < amount){
+            throw new NotEnoughBalanceException();
+        }
+        return true;
     }
     @Override
     public Transaction payDeposit(CreditCard creditCard, double amount, int rental_id) throws Exception {
-        // deduct money from credit card
-//        creditCard.setBalance(creditCard.getBalance() - amount);
+        creditCard.setBalance(creditCard.getBalance() - amount);
         int transaction_id = TransactionDAO.insertTransaction(rental_id, amount, "deposit");
-
         return TransactionDAO.getTransactionByTransactionId(transaction_id).get(0);
     }
 
@@ -39,6 +46,7 @@ public class EcoBank implements Interbank{
 
     @Override
     public Transaction payRental(CreditCard cardNumber, double amount, int rentalId) throws SQLException, ClassNotFoundException, NotEnoughBalanceException {
+
         int transaction_id = TransactionDAO.insertTransaction(rentalId, amount, "return");
 
         return TransactionDAO.getTransactionByTransactionId(transaction_id).get(0);

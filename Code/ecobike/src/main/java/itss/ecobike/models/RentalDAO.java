@@ -25,8 +25,8 @@ public class RentalDAO {
         }
     }
 
-    public static void updateRentalEndtime(int rentalId) throws SQLException, ClassNotFoundException {
-        String stm = "update public.\"Rental\" set end_time = current_timestamp where rental_id = " + rentalId;
+    public static void updateRentalEndtime(int rentalId, int returnDockId) throws SQLException, ClassNotFoundException {
+        String stm = "update public.\"Rental\" set end_time = current_timestamp, return_dock = " + returnDockId + " where rental_id = " + rentalId;
         DBUtil.dbExecuteUpdate(stm);
     }
 
@@ -51,7 +51,8 @@ public class RentalDAO {
                 rentalInfo.setDeposit(resultSet.getDouble("deposit"));
                 rentalInfo.setRentingTime(resultSet.getInt("renting_time"));
                 rentalInfo.setCardNumber(resultSet.getString("card_number"));
-                rentalInfo.setAmount(RentalPriceCalculator.calculate(rentalInfo.getRentingTime(), resultSet.getDouble("rental_price_multiplier")));
+                rentalInfo.setRentalStrategy(new StandardRental());
+                rentalInfo.setAmount(rentalInfo.getRentalStrategy().calculate(rentalInfo.getRentingTime()) * resultSet.getDouble("rental_price_multiplier"));
             }
 
             return rentalInfo;

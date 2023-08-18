@@ -43,14 +43,16 @@ public class PaymentScreen {
     @FXML
     private Button confirm;
 
+    private int returnDockId;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     private String bikeCode;
-    public void setData(String bikeCode) throws SQLException, ClassNotFoundException {
+    public void setData(String bikeCode, int returnDockId) throws SQLException, ClassNotFoundException {
         this.bikeCode = bikeCode;
-
+        this.returnDockId = returnDockId;
         RentalInfo rentalInfo = RentalDAO.getRentalInfo(bikeCode);
         cardNumber.setText(rentalInfo.getCardNumber());
         bikeType.setText(rentalInfo.getType());
@@ -62,14 +64,14 @@ public class PaymentScreen {
         confirm.setOnMouseClicked(mouseEvent -> {
             Transaction transaction;
             CreditCard creditCard = new CreditCard(
-                    "Hai",
+                    "139396_group5_2023",
                     cardNumber.getText(),
-                    "abc",
+                    "123",
                     10,
                     10
-            );
+            ); // card expired
             try {
-                transaction = ReturnBikeController.returnBike(creditCard, rentalInfo.getAmount(), rentalInfo.getDeposit(), rentalInfo.getRentalId(), rentalInfo.getBarCode());
+                transaction = ReturnBikeController.returnBike(creditCard, rentalInfo.getAmount(), rentalInfo.getDeposit(), rentalInfo.getRentalId(), rentalInfo.getBarCode(), returnDockId);
             } catch (SQLException | ClassNotFoundException | NotEnoughBalanceException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -129,5 +131,10 @@ public class PaymentScreen {
             stage.setScene(scene);
             stage.show();
         });
+    }
+
+    @FXML
+    private void exit() {
+        System.exit(0);
     }
 }

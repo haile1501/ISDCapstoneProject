@@ -15,14 +15,14 @@
                </image>
             </ImageView>
             <FontAwesomeIconView fx:id="viewRentedBikes" fill="WHITE" glyphName="BICYCLE" layoutX="1089.0" layoutY="60.0" size="30" />
-            <FontAwesomeIconView fill="WHITE" glyphName="SIGN_IN" layoutX="1189.0" layoutY="62.0" size="30" />
+            <FontAwesomeIconView fx:id="exitButton" fill="WHITE" glyphName="SIGN_IN" layoutX="1189.0" layoutY="62.0" onMouseClicked="#exit" size="30" />
          </children>
       </Pane>
       <Pane layoutX="336.0" layoutY="145.0" prefHeight="82.0" prefWidth="627.0">
          <children>
-            <TextField fx:id="searchInput" layoutX="-42.0" layoutY="28.0" prefHeight="26.0" prefWidth="303.0" />
+            <TextField fx:id="searchInput" layoutX="-42.0" layoutY="28.0" prefHeight="26.0" prefWidth="303.0" promptText="search for docks" />
             <Button fx:id="searchButton" layoutX="274.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="Search" textFill="WHITE" />
-            <TextField fx:id="barcode" layoutX="381.0" layoutY="28.0" prefHeight="26.0" prefWidth="217.0" />
+            <TextField fx:id="barcode" layoutX="381.0" layoutY="28.0" prefHeight="26.0" prefWidth="217.0" promptText="scan bike barcode" />
             <Button fx:id="scanButton" layoutX="613.0" layoutY="28.0" mnemonicParsing="false" onAction="#processScanBarcode" style="-fx-background-color: #00a13f;" text="Scan" textFill="WHITE" />
          </children>
       </Pane>

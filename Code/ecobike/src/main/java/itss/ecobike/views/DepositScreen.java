@@ -91,11 +91,21 @@ public class DepositScreen {
                 expYearCombo.getValue()
         );
         // use processDeposit from DepositScreenController
-        Transaction transaction = DepositScreenController.processDeposit(
-                creditCard,
-                barcode.getText(),
-                depositFee.getText()
-        );
+        Transaction transaction = null;
+        try{
+            transaction = DepositScreenController.processDeposit(
+                    creditCard,
+                    barcode.getText(),
+                    depositFee.getText()
+            );
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error occurred while processing deposit");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }
         // show success alert
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -122,5 +132,10 @@ public class DepositScreen {
         stage = (Stage)barcode.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void exit() {
+        System.exit(0);
     }
 }

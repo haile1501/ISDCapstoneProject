@@ -157,4 +157,9 @@ public class MainScreen {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void exit() {
+        System.exit(0);
+    }
 }
