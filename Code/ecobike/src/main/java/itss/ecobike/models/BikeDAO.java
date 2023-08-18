@@ -31,17 +31,23 @@ public class BikeDAO {
         String selectStmt = "SELECT * FROM public.\"Bike\" b INNER JOIN public.\"BikeType\" bt ON b.bike_type_id = bt.type_id WHERE barcode = '" + Barcode + "';";
         try {
             ResultSet rsBikes = DBUtil.dbExecuteQuery(selectStmt);
-
             ObservableList<Bike> bikeList = FXCollections.observableArrayList();
-
             while (rsBikes.next()) {
                 bikeList.add(getBikeFromDBRow(rsBikes));
             }
-            // Return bikeList (ObservableList of Bikes)
             return bikeList;
         } catch (SQLException e) {
             System.out.println("SQL select operation has been failed: " + e);
-            // Return exception
+            throw e;
+        }
+    }
+
+    public static void updateRentStatus(String barcode, boolean isRented) throws SQLException, ClassNotFoundException {
+        String updateStmt = "UPDATE public.\"Bike\" SET is_rented = " + isRented + " WHERE barcode = '" + barcode + "';";
+        try {
+            DBUtil.dbExecuteUpdate(updateStmt);
+        } catch (SQLException e) {
+            System.out.print("Error occurred while UPDATE Operation: " + e);
             throw e;
         }
     }
