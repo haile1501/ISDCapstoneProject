@@ -59,7 +59,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="1100.0" layoutY="750.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="120.0" text="Confirm">
+                  <Button fx:id="confirmButton" layoutX="1100.0" layoutY="750.0" mnemonicParsing="false" onAction="#processDeposit" prefHeight="57.0" prefWidth="120.0" text="Confirm">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -70,7 +70,7 @@
                      </font>
                   </Button>
                   <Line endX="-88.0" endY="102.0" layoutX="770.0" layoutY="394.0" startX="-88.0" startY="-66.0" />
-                  <TextField layoutX="783.0" layoutY="327.0" promptText="1234 1234 1234 1234" />
+                  <TextField fx:id="cardNumber" layoutX="783.0" layoutY="327.0" prefHeight="25.0" prefWidth="263.0" promptText="card number" />
                   <Label layoutX="336.0" layoutY="252.0" text="Summary">
                      <font>
                         <Font size="24.0" />
@@ -81,15 +81,10 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="783.0" layoutY="373.0" prefHeight="25.0" prefWidth="60.0" promptText="mm" />
-                  <TextField layoutX="783.0" layoutY="420.0" promptText="cvc" />
-                  <TextField layoutX="872.0" layoutY="373.0" prefHeight="25.0" prefWidth="60.0" promptText="yy" />
-                  <TextField layoutX="783.0" layoutY="466.0" promptText="name on card" />
-                  <Text layoutX="853.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
+                  <TextField fx:id="cardSecurityCode" layoutX="783.0" layoutY="420.0" prefHeight="25.0" prefWidth="263.0" promptText="security code" />
+                  <TextField fx:id="cardHolderName" layoutX="783.0" layoutY="466.0" prefHeight="25.0" prefWidth="263.0" promptText="name on card" />
+                  <ComboBox fx:id="expMonthCombo" layoutX="783.0" layoutY="372.0" prefHeight="25.0" prefWidth="120.0" promptText="expire month" visibleRowCount="6" />
+                  <ComboBox fx:id="expYearCombo" layoutX="926.0" layoutY="372.0" prefHeight="25.0" prefWidth="120.0" promptText="expire year" />
                </children>
             </Pane>
             </children>
