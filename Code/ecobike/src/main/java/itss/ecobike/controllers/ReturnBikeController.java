@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class ReturnBikeController {
     public static Transaction returnBike(CreditCard creditCard, double rentalAmount, double deposit, int rentalId, String barcode, int returnDockId) throws SQLException, ClassNotFoundException, NotEnoughBalanceException {
-        // check for valid credit card
+        // TODO: check for valid credit card - card expire, card number, balance, ...
         Interbank interbank = new EcoBank();
         interbank.returnDeposit(creditCard, deposit, rentalId);
         Transaction transaction = interbank.payRental(creditCard, rentalAmount, rentalId);

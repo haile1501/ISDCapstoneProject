@@ -43,14 +43,14 @@ public class ReturnDockItem {
         emptyDockingPoints.setText("Empty docking points: " + emptyDockingPointsData);
 
         select.setOnMouseClicked(mouseEvent -> {
-//            if (emptyDockingPointsData < 0) {
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error");
-//                alert.setHeaderText("Dock is full");
-//                alert.setContentText("Please select another dock");
-//                alert.showAndWait();
-//                return;
-//            }
+            if (emptyDockingPointsData < 0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Dock is full");
+                alert.setContentText("Please select another dock");
+                alert.showAndWait();
+                return;
+            }
             FXMLLoader loader2 = new FXMLLoader();
             String pathToFxml2 = "./src/main/resources/itss/ecobike/PaymentScreen.fxml";
             URL dockItemURL2 = null;
