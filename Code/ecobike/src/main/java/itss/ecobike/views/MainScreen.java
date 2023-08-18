@@ -1,6 +1,5 @@
 package itss.ecobike.views;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import itss.ecobike.controllers.RentBikeController;
 import itss.ecobike.models.Bike;
@@ -88,7 +87,7 @@ public class MainScreen {
         docksContainer.getChildren().clear();
         for (Dock dock: docks) {
             FXMLLoader loader = new FXMLLoader();
-            String pathToFxml = "./src/main/resources/itss/ecobike/DockItem.fxml";
+            String pathToFxml = "./src/main/resources/itss/ecobike/components/DockItem.fxml";
             URL dockItemURL = new File(pathToFxml).toURI().toURL();
             loader.setLocation(dockItemURL);
             HBox pane = loader.load();
