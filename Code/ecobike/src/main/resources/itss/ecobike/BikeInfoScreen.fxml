@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -18,8 +17,6 @@
                                 <Image url="@images/logo.png" />
                             </image>
                         </ImageView>
-                        <FontAwesomeIconView fill="WHITE" glyphName="BICYCLE" layoutX="1058.0" layoutY="60.0" size="30" />
-                        <FontAwesomeIconView fx:id="exitButton" fill="WHITE" glyphName="SIGN_IN" layoutX="1184.0" layoutY="60.0" onMouseClicked="#exit" size="30" />
                     </children>
                 </Pane>
             <Pane layoutY="100.0" prefHeight="850.0" prefWidth="1300.0">

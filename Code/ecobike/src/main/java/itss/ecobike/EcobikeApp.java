@@ -12,6 +12,7 @@ public class EcobikeApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(EcobikeApp.class.getResource("MainScreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("EcoBike");
         stage.setScene(scene);
         stage.show();
     }

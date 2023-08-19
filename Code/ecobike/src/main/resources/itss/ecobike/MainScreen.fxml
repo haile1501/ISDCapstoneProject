@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="950.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.MainScreen">
    <children>
-      <Pane prefHeight="102.0" prefWidth="1300.0" style="-fx-background-color: #00a13f;">
+      <Pane prefHeight="100.0" prefWidth="1300.0" style="-fx-background-color: #00a13f;">
          <children>
             <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="80.0" pickOnBounds="true" preserveRatio="true">
                <image>

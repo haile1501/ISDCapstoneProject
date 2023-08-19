@@ -9,14 +9,13 @@
 
 <AnchorPane prefHeight="950" prefWidth="1300" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.PaymentScreen">
     <children>
-        <Pane prefHeight="102.0" prefWidth="1300.0" style="-fx-background-color: #00a13f;">
+        <Pane prefHeight="100.0" prefWidth="1300.0" style="-fx-background-color: #00a13f;">
             <children>
                 <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="80.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@images/logo.png" />
                     </image>
                 </ImageView>
-                <FontAwesomeIconView fx:id="exitButton" fill="WHITE" glyphName="SIGN_IN" layoutX="1189.0" layoutY="62.0" onMouseClicked="#exit" size="30" />
             </children>
         </Pane>
         <Label layoutX="220.0" layoutY="198.0" text="Payment information">
