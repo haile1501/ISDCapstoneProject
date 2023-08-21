@@ -134,8 +134,4 @@ public class DepositScreen {
         stage.show();
     }
 
-    @FXML
-    private void exit() {
-        System.exit(0);
-    }
 }

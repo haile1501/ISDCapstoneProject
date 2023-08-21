@@ -101,23 +101,13 @@ public class PaymentScreen {
             );
             try {
                 transaction = ReturnBikeController.returnBike(creditCard, rentalInfo.getAmount(), rentalInfo.getDeposit(), rentalInfo.getRentalId(), rentalInfo.getBarCode(), returnDockId);
-            } catch (SQLException | ClassNotFoundException | NotEnoughBalanceException e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Not enough balance");
-                return;
-            } catch (InvalidCardInfo e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Invalid card info");
-                return;
-            } catch (ExpiredCreditCard e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Expired credit card");
-                return;
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error occurred while processing payment");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+                return;
             }
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
