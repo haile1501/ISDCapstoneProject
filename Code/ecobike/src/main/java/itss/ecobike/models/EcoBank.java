@@ -22,6 +22,7 @@ public class EcoBank implements Interbank{
             throw new NullCreditCard();
         }
         if (!"139396_group5_2023".equals(creditCard.getCardHolderName())){
+            System.out.println(creditCard.getCardHolderName());
             throw new InvalidCardInfo();
         }
         if (isExpired(creditCard)){
