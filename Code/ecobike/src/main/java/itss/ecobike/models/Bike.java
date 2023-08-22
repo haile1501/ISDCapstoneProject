@@ -5,15 +5,15 @@ public class Bike {
     private BikeType bikeType;
     private String licensePlate;
     private int dockId;
-    private int batteryPercentage;
+//    private int batteryPercentage;
     private Boolean isRented;
 
-    public Bike(String barcode, BikeType bikeType, String licensePlate, int dockId, int batteryPercentage, Boolean isRented) {
+    public Bike(String barcode, BikeType bikeType, String licensePlate, int dockId, Boolean isRented) {
         this.barcode = barcode;
         this.bikeType = bikeType;
         this.licensePlate = licensePlate;
         this.dockId = dockId;
-        this.batteryPercentage = batteryPercentage;
+//        this.batteryPercentage = batteryPercentage;
         this.isRented = isRented;
     }
 
@@ -31,14 +31,6 @@ public class Bike {
 
     public void setBarcode(String barcode) {
         this.barcode = barcode;
-    }
-
-    public int getBatteryPercentage() {
-        return batteryPercentage;
-    }
-
-    public void setBatteryPercentage(int batteryPercentage) {
-        this.batteryPercentage = batteryPercentage;
     }
 
     public int getDockId() {

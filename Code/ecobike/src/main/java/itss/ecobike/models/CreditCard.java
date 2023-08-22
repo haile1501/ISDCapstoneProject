@@ -8,7 +8,7 @@ public class CreditCard {
     /**
      * The name of the holder of the card
      */
-    private String cardHolderName;
+    private static String cardHolderName;
 
     /**
      * The valid number of the card
@@ -23,7 +23,7 @@ public class CreditCard {
     /**
      * The money left in the card.
      */
-    private double balance;
+    private static double balance = 1_000_000;
 
     /**
      * The expired date of the card in defined time format
@@ -32,7 +32,7 @@ public class CreditCard {
 
 
     public void setCardHolderName(String cardHolderName) {
-        this.cardHolderName = cardHolderName;
+        CreditCard.cardHolderName = cardHolderName;
     }
 
     public void setCardNumber(String cardNumber) {
@@ -44,7 +44,7 @@ public class CreditCard {
     }
 
     public void setBalance(double balance) {
-        this.balance = balance;
+        CreditCard.balance = balance;
     }
 
     public void setExpirationDate(int year, int month) {
@@ -55,7 +55,7 @@ public class CreditCard {
         this.setCardNumber(cardNumber);
         this.setCardSecurity(cardSecurity);
         this.setExpirationDate(expYear, expMonth);
-        this.setBalance(1_000_000);
+//        this.setBalance(1_000_000);
     }
 
     public String getCardNumber() {

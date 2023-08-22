@@ -4,6 +4,8 @@ import itss.ecobike.models.dto.RentedBike;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import itss.ecobike.utils.DBUtil;
+
+import java.lang.module.ResolvedModule;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -106,15 +108,20 @@ public class BikeDAO {
                 rs.getDouble("rental_price_multiplier")
         );
 
-        return new RentedBike(
+        RentedBike rentedBike = new RentedBike(
                 rs.getString("barcode"),
                 bikeType,
                 rs.getString("license_plate"),
                 rs.getInt("dock_id"),
-                rs.getInt("battery_percentage"),
                 rs.getBoolean("is_rented"),
                 rs.getInt("renting_time")
         );
+
+        if (rentedBike.getBike() instanceof Electric) {
+            ((Electric) rentedBike.getBike()).setBatteryPercentage(rs.getInt("battery_percentage"));
+        }
+
+        return rentedBike;
     }
 
     private static Bike getBikeFromDBRow(ResultSet rs) throws SQLException, ClassNotFoundException {
@@ -128,14 +135,19 @@ public class BikeDAO {
                 rs.getDouble("rental_price_multiplier")
         );
 
-        return new Bike(
-                rs.getString("barcode"),
+        Bike bike = BikeFactory.createBike(
                 bikeType,
+                rs.getString("barcode"),
                 rs.getString("license_plate"),
                 rs.getInt("dock_id"),
-                rs.getInt("battery_percentage"),
                 rs.getBoolean("is_rented")
         );
+
+        if (bike instanceof Electric){
+            ((Electric) bike).setBatteryPercentage(rs.getInt("battery_percentage"));
+        }
+
+        return bike;
     }
 
     public static void returnBike(String barcode, int returnDockId) throws SQLException, ClassNotFoundException {

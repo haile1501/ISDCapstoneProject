@@ -37,7 +37,7 @@ public class RentalDAO {
                 " and r.bike_barcode = b.barcode" +
                 " and r.end_time is null" +
                 " and tr.rental_id = r.rental_id" +
-                " and tr.type = 'deposit'" +
+                " and tr.type = 'pay_deposit'" +
                 " and b.barcode = '" + barCode + "'";
 
         try {

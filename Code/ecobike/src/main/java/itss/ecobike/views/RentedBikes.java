@@ -62,7 +62,7 @@ public class RentedBikes {
             Pane pane = loader.load();
 
             RentedBikeItem rentedBikeItem = loader.getController();
-            rentedBikeItem.setData(bike.getBarcode(), bike.getBikeType().getTypeName(), 3, bike.getBatteryPercentage(), bike.getLicensePlate(), bike.getRentingTime(), bike.getAmount());
+            rentedBikeItem.setData(bike);
             rentedBikesContainer.getChildren().add(pane);
         }
     }

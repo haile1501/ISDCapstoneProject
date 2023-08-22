@@ -1,0 +1,7 @@
+package itss.ecobike.models;
+
+public class TwinBike extends Bike{
+    public TwinBike(String barcode, BikeType bikeType, String licensePlate, int dockId, Boolean isRented) {
+        super(barcode, bikeType, licensePlate, dockId, isRented);
+    }
+}

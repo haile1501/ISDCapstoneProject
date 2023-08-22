@@ -65,7 +65,7 @@ public class DockScreen {
             Pane pane = loader.load();
 
             BikeItem bikeItem = loader.getController();
-            bikeItem.setData(bike.getBarcode(), bike.getBikeType().getTypeName(), 3, bike.getBatteryPercentage(), bike.getLicensePlate());
+            bikeItem.setData(bike);
             bikesContainer.getChildren().add(pane);
         }
     }

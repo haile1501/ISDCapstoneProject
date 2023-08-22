@@ -1,5 +1,7 @@
 package itss.ecobike.views.components;
 
+import itss.ecobike.models.Bike;
+import itss.ecobike.models.Electric;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -15,13 +17,13 @@ public class BikeItem {
     @FXML
     private Label licensePlate;
 
-    public void setData(String code, String type, int duration, int battery, String licensePlate) {
-        this.code.setText("Barcode: " + code);
-        this.type.setText(type);
-        if (type.equals("Standard E-bike")) {
-            this.duration.setText("Duration: " + duration + " hrs");
-            this.battery.setText("Battery: " + battery + " %");
-            this.licensePlate.setText("License plate: " + licensePlate);
+    public void setData(Bike bike) {
+        this.code.setText("Barcode: " + bike.getBarcode());
+        this.type.setText(bike.getBikeType().getTypeName());
+        if (bike instanceof Electric) {
+            this.duration.setText("Duration: " + ((Electric) bike).getDuration() + " hrs");
+            this.battery.setText("Battery: " + ((Electric) bike).getBatteryPercentage() + " %");
+            this.licensePlate.setText("License plate: " + bike.getLicensePlate());
         } else {
             this.duration.setText("");
             this.battery.setText("");

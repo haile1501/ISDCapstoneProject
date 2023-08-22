@@ -33,15 +33,17 @@ public class EcoBank implements Interbank{
     }
     @Override
     public Transaction payDeposit(CreditCard creditCard, double amount, int rentalId) throws Exception {
-        creditCard.setBalance(creditCard.getBalance() + amount);
+        creditCard.setBalance(creditCard.getBalance() - amount);
         int transaction_id = TransactionDAO.insertTransaction(rentalId, amount, "pay_deposit");
+        System.out.println(getBalance(creditCard));
         return TransactionDAO.getTransactionByTransactionId(transaction_id).get(0);
     }
 
     @Override
     public Transaction returnDeposit(CreditCard creditCard, double amount, int rentalId) throws Exception {
-        creditCard.setBalance(creditCard.getBalance() - amount);
+        creditCard.setBalance(creditCard.getBalance() + amount);
         int transaction_id = TransactionDAO.insertTransaction(rentalId, amount, "refund_deposit");
+        System.out.println(getBalance(creditCard));
         return TransactionDAO.getTransactionByTransactionId(transaction_id).get(0);
     }
 
@@ -49,6 +51,7 @@ public class EcoBank implements Interbank{
     public Transaction payRental(CreditCard creditCard, double amount, int rentalId) throws SQLException, ClassNotFoundException, NotEnoughBalanceException {
         creditCard.setBalance(creditCard.getBalance() - amount);
         int transaction_id = TransactionDAO.insertTransaction(rentalId, amount, "pay_rental");
+        System.out.println(getBalance(creditCard));
         return TransactionDAO.getTransactionByTransactionId(transaction_id).get(0);
     }
 

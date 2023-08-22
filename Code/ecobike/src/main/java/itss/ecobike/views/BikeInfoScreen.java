@@ -3,6 +3,7 @@ package itss.ecobike.views;
 import itss.ecobike.models.Bike;
 import itss.ecobike.models.Dock;
 import itss.ecobike.models.DockDAO;
+import itss.ecobike.models.Electric;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,12 +64,16 @@ public class BikeInfoScreen {
         pedalCount.setText(String.valueOf(bike.getBikeType().getPedalCount()));
         rearSeatCount.setText(String.valueOf(bike.getBikeType().getRearSeatCount()));
         depositFee.setText(String.valueOf((int)(bike.getBikeType().getBikeValue() * 0.4)));
-        batteryPercentage.setText("<unavailable>");
+//        batteryPercentage.setText("<unavailable>");
+        if(bike instanceof Electric) {
+            batteryPercentage.setText(String.valueOf(((Electric) bike).getBatteryPercentage()) + "%");
+        } else {
+            batteryPercentage.setText("<unavailable>");
+        }
     }
 
     void setData(String barcode){
         this.barcode.setText(barcode);
-
     }
 
     @FXML
