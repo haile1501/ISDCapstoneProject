@@ -1,8 +1,9 @@
 package itss.ecobike.views.components;
 
+import itss.ecobike.entities.Dock;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import org.w3c.dom.events.MouseEvent;
 
 public class DockItem {
     @FXML
@@ -14,9 +15,12 @@ public class DockItem {
     @FXML
     private Label availableBikes;
 
-    public void setData(String dockNameData, String addressData, int availableBikesData) {
-        dockName.setText(dockNameData);
-        address.setText(addressData);
-        availableBikes.setText("Available bikes: " + availableBikesData);
+    @FXML
+    private Button viewButton;
+
+    public void setData(Dock dock) {
+        dockName.setText(dock.getDockName());
+        address.setText(dock.getAddress());
+        availableBikes.setText("Available bikes: " + dock.getAvailableBikes());
     }
 }

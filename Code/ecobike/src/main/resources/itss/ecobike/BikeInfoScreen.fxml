@@ -71,7 +71,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <Label layoutX="737.0" layoutY="431.0" text="Battery" />
+                  <Label fx:id="batteryLabel" layoutX="737.0" layoutY="431.0" text="Battery" />
                   <Label layoutX="737.0" layoutY="398.0" text="Rear seat" />
                   <Label layoutX="581.0" layoutY="431.0" text="Pedal" />
                   <Label layoutX="581.0" layoutY="398.0" text="Saddle" />

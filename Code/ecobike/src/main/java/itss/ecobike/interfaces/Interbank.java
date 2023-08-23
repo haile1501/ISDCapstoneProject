@@ -1,6 +1,8 @@
-package itss.ecobike.models;
+package itss.ecobike.interfaces;
 
 import itss.ecobike.exceptions.NotEnoughBalanceException;
+import itss.ecobike.entities.CreditCard;
+import itss.ecobike.entities.Transaction;
 
 import java.sql.SQLException;
 

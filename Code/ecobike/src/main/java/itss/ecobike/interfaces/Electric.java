@@ -1,4 +1,4 @@
-package itss.ecobike.models;
+package itss.ecobike.interfaces;
 
 public interface Electric {
     int getBatteryPercentage();

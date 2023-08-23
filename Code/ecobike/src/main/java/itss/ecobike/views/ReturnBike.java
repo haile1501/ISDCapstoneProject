@@ -1,7 +1,7 @@
 package itss.ecobike.views;
 
-import itss.ecobike.models.Dock;
-import itss.ecobike.models.DockDAO;
+import itss.ecobike.controllers.DockController;
+import itss.ecobike.entities.Dock;
 import itss.ecobike.views.components.ReturnDockItem;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,8 +38,8 @@ public class ReturnBike {
 
     private String bikeCode;
     public void setData(String bikeCode) throws SQLException, ClassNotFoundException, IOException {
-        this.title.setText("Select a dock to return bike " + bikeCode);
         this.bikeCode = bikeCode;
+        this.title.setText("Select a dock to return bike " + bikeCode);
         back.setOnMouseClicked(mouseEvent -> {
             FXMLLoader loader2 = new FXMLLoader();
             String pathToFxml2 = "./src/main/resources/itss/ecobike/RentedBikes.fxml";
@@ -61,7 +61,7 @@ public class ReturnBike {
             stage.show();
         });
 
-        ObservableList<Dock> docks = DockDAO.searchDocks("");
+        ObservableList<Dock> docks = DockController.getAllDocks();
         docksContainer.getChildren().clear();
         for (Dock dock: docks) {
             FXMLLoader loader = new FXMLLoader();

@@ -1,23 +1,21 @@
 package itss.ecobike.views;
 
-import itss.ecobike.controllers.ReturnBikeController;
-import itss.ecobike.exceptions.ExpiredCreditCard;
-import itss.ecobike.exceptions.InvalidCardInfo;
-import itss.ecobike.exceptions.NotEnoughBalanceException;
-import itss.ecobike.models.CreditCard;
-import itss.ecobike.models.RentalDAO;
-import itss.ecobike.models.Transaction;
-import itss.ecobike.models.dto.RentalInfo;
+import itss.ecobike.controllers.NotifyScreenController;
+import itss.ecobike.controllers.RentalController;
+import itss.ecobike.controllers.TransactionController;
+import itss.ecobike.entities.CreditCard;
+import itss.ecobike.entities.Transaction;
+import itss.ecobike.entities.dto.RentalInfo;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -79,10 +77,10 @@ public class PaymentScreen {
         expMonthCombo.getSelectionModel().select(0); // January
         expYearCombo.getSelectionModel().select(0);
     }
-    public void setData(String bikeCode, int returnDockId) throws SQLException, ClassNotFoundException {
+    public void setData(String bikeCode, int returnDockId) throws Exception {
         this.bikeCode = bikeCode;
         this.returnDockId = returnDockId;
-        RentalInfo rentalInfo = RentalDAO.getRentalInfo(bikeCode);
+        RentalInfo rentalInfo = RentalController.getRentalInfo(bikeCode);
         cardNumber.setText(rentalInfo.getCardNumber());
         bikeType.setText(rentalInfo.getType());
         barCode.setText(rentalInfo.getBarCode());
@@ -100,74 +98,73 @@ public class PaymentScreen {
                     expYearCombo.getValue()
             );
             try {
-                transaction = ReturnBikeController.returnBike(creditCard, rentalInfo.getAmount(), rentalInfo.getDeposit(), rentalInfo.getRentalId(), rentalInfo.getBarCode(), returnDockId);
+                transaction = TransactionController.returnBike(creditCard, rentalInfo.getAmount(), rentalInfo.getDeposit(), rentalInfo.getRentalId(), rentalInfo.getBarCode(), returnDockId);
             } catch (Exception e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Error occurred while processing payment");
-                alert.setContentText(e.getMessage());
-                alert.showAndWait();
+                NotifyScreenController.showErrorAlert("Error occured while processing payment", e.getMessage());
                 return;
             }
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText("Return bike successfully");
             if (transaction != null) {
-                alert.setContentText("Transaction ID: " + transaction.getTransactionId() + "\n" +
+                NotifyScreenController.showSuccessAlert("Return bike successfully", "Transaction ID: " + transaction.getTransactionId() + "\n" +
                         "Amount: " + transaction.getAmount() + "\n" +
                         "Transaction time: " + transaction.getTransactionTime() + "\n\n\n" +
                         "Thank you!"
                 );
             } else {
-                alert.setContentText("Renting time is less than 10 minutes so your rental is free\n" +
-                         "Thank you!"
+                NotifyScreenController.showSuccessAlert("Return bike successfully", "Renting time is less than 10 minutes so your rental is free\n" +
+                        "Thank you!"
                 );
             }
-            alert.showAndWait();
 
-            FXMLLoader loader2 = new FXMLLoader();
-            String pathToFxml2 = "./src/main/resources/itss/ecobike/MainScreen.fxml";
-            URL dockItemURL2 = null;
-            try {
-                dockItemURL2 = new File(pathToFxml2).toURI().toURL();
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
-            loader2.setLocation(dockItemURL2);
-            try {
-                root = loader2.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            scene = new Scene(root);
-            stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+            returnToMainScreen(mouseEvent);
         });
 
         back.setOnMouseClicked(mouseEvent -> {
-            FXMLLoader loader2 = new FXMLLoader();
-            String pathToFxml2 = "./src/main/resources/itss/ecobike/ReturnBikeScreen.fxml";
-            URL dockItemURL2 = null;
-            try {
-                dockItemURL2 = new File(pathToFxml2).toURI().toURL();
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
-            loader2.setLocation(dockItemURL2);
-            try {
-                root = loader2.load();
-                ReturnBike controller = loader2.getController();
-                controller.setData(bikeCode);
-            } catch (IOException | ClassNotFoundException | SQLException e) {
-                throw new RuntimeException(e);
-            }
-            scene = new Scene(root);
-            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+            returnToBikeScreen(bikeCode, mouseEvent);
         });
+    }
+
+    private void returnToBikeScreen(String bikeCode, MouseEvent mouseEvent) {
+        FXMLLoader loader2 = new FXMLLoader();
+        String pathToFxml2 = "./src/main/resources/itss/ecobike/ReturnBikeScreen.fxml";
+        URL dockItemURL2 = null;
+        try {
+            dockItemURL2 = new File(pathToFxml2).toURI().toURL();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        loader2.setLocation(dockItemURL2);
+        try {
+            root = loader2.load();
+            ReturnBike controller = loader2.getController();
+            controller.setData(bikeCode);
+        } catch (IOException | ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+        scene = new Scene(root);
+        stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void returnToMainScreen(MouseEvent mouseEvent) {
+        FXMLLoader loader2 = new FXMLLoader();
+        String pathToFxml2 = "./src/main/resources/itss/ecobike/MainScreen.fxml";
+        URL dockItemURL2 = null;
+        try {
+            dockItemURL2 = new File(pathToFxml2).toURI().toURL();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        loader2.setLocation(dockItemURL2);
+        try {
+            root = loader2.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        scene = new Scene(root);
+        stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

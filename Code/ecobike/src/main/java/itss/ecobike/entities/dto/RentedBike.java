@@ -1,7 +1,8 @@
-package itss.ecobike.models.dto;
+package itss.ecobike.entities.dto;
 
-import itss.ecobike.models.*;
-import itss.ecobike.utils.RentalPriceCalculator;
+import itss.ecobike.entities.strategies.RentalStrategy;
+import itss.ecobike.entities.*;
+import itss.ecobike.entities.strategies.StandardRental;
 
 public class RentedBike {
 

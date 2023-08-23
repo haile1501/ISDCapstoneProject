@@ -1,14 +1,13 @@
 package itss.ecobike.views;
 
-import itss.ecobike.models.Bike;
-import itss.ecobike.models.Dock;
-import itss.ecobike.models.DockDAO;
-import itss.ecobike.models.Electric;
-import javafx.collections.ObservableList;
+import itss.ecobike.controllers.DockController;
+import itss.ecobike.entities.Bike;
+import itss.ecobike.interfaces.Electric;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -45,6 +44,9 @@ public class BikeInfoScreen {
     @FXML
     private Text depositFee;
 
+    @FXML
+    private Label batteryLabel;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -59,25 +61,20 @@ public class BikeInfoScreen {
         barcode.setText(bike.getBarcode());
         bikeType.setText(bike.getBikeType().getTypeName());
         licensePlate.setText(bike.getLicensePlate());
-        dockName.setText(DockDAO.getDockById(bike.getDockId()).getDockName());
+        dockName.setText(DockController.getDockInfo(bike.getDockId()).getDockName());
         saddleCount.setText(String.valueOf(bike.getBikeType().getSaddleCount()));
         pedalCount.setText(String.valueOf(bike.getBikeType().getPedalCount()));
         rearSeatCount.setText(String.valueOf(bike.getBikeType().getRearSeatCount()));
         depositFee.setText(String.valueOf((int)(bike.getBikeType().getBikeValue() * 0.4)));
-//        batteryPercentage.setText("<unavailable>");
         if(bike instanceof Electric) {
-            batteryPercentage.setText(String.valueOf(((Electric) bike).getBatteryPercentage()) + "%");
+            batteryPercentage.setText(((Electric) bike).getBatteryPercentage() + "%");
         } else {
-            batteryPercentage.setText("<unavailable>");
+            batteryLabel.setVisible(false);
+            batteryPercentage.setVisible(false);
         }
     }
-
-    void setData(String barcode){
-        this.barcode.setText(barcode);
-    }
-
     @FXML
-    private void returnToMainScreen() throws SQLException, IOException, ClassNotFoundException {
+    private void returnToMainScreen() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         String pathToFxml = "./src/main/resources/itss/ecobike/MainScreen.fxml";
         URL mainScreenURL = new File(pathToFxml).toURI().toURL();
@@ -90,7 +87,7 @@ public class BikeInfoScreen {
     }
 
     @FXML
-    private void proceedToDepositScreen() throws SQLException, IOException, ClassNotFoundException {
+    private void proceedToDepositScreen() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         String pathToFxml = "./src/main/resources/itss/ecobike/DepositScreen.fxml";
         URL depositScreenURL = new File(pathToFxml).toURI().toURL();

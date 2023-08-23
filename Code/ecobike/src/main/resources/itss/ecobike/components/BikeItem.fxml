@@ -17,19 +17,19 @@
             <Pane prefHeight="200.0" prefWidth="200.0" />
          </children>
       </HBox>
-      <Label fx:id="licensePlate" layoutX="512.0" layoutY="40.0" text="License plate">
+      <Label fx:id="licensePlate" layoutX="294.0" layoutY="78.0" text="License plate">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label fx:id="battery" layoutX="512.0" layoutY="115.0" text="Battery">
+      <Label fx:id="battery" layoutX="294.0" layoutY="116.0" text="Battery">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label fx:id="duration" layoutX="512.0" layoutY="78.0" text="Duration">
+      <Label fx:id="duration" layoutX="472.0" layoutY="116.0" text="Duration">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label fx:id="type" layoutX="294.0" layoutY="81.0" text="Type">
+      <Label fx:id="type" layoutX="472.0" layoutY="40.0" text="Type">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>

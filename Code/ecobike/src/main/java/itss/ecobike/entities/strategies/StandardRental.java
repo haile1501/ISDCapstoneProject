@@ -1,6 +1,6 @@
-package itss.ecobike.models;
+package itss.ecobike.entities.strategies;
 
-public class StandardRental implements RentalStrategy{
+public class StandardRental implements RentalStrategy {
     @Override
     public double calculate(int rentingTimeMinutes) {
         double basePrice = 10000;

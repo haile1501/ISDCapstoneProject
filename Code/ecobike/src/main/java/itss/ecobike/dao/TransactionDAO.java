@@ -1,5 +1,6 @@
-package itss.ecobike.models;
+package itss.ecobike.dao;
 
+import itss.ecobike.entities.Transaction;
 import itss.ecobike.utils.DBUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

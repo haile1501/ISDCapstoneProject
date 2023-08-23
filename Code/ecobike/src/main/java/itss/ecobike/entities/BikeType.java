@@ -1,4 +1,4 @@
-package itss.ecobike.models;
+package itss.ecobike.entities;
 
 public class BikeType {
     private int typeId;

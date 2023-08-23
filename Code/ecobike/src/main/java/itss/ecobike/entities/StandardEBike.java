@@ -1,6 +1,8 @@
-package itss.ecobike.models;
+package itss.ecobike.entities;
 
-public class StandardEBike extends Bike implements Electric{
+import itss.ecobike.interfaces.Electric;
+
+public class StandardEBike extends Bike implements Electric {
     private int batteryPercentage;
 
     @Override

@@ -1,11 +1,10 @@
-package itss.ecobike.models;
+package itss.ecobike.entities;
 
 public class Bike {
     private String barcode;
     private BikeType bikeType;
     private String licensePlate;
     private int dockId;
-//    private int batteryPercentage;
     private Boolean isRented;
 
     public Bike(String barcode, BikeType bikeType, String licensePlate, int dockId, Boolean isRented) {
@@ -13,7 +12,6 @@ public class Bike {
         this.bikeType = bikeType;
         this.licensePlate = licensePlate;
         this.dockId = dockId;
-//        this.batteryPercentage = batteryPercentage;
         this.isRented = isRented;
     }
 

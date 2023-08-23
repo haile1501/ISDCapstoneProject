@@ -1,5 +1,6 @@
-package itss.ecobike.models;
+package itss.ecobike.dao;
 
+import itss.ecobike.entities.BikeType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import itss.ecobike.utils.DBUtil;
@@ -14,11 +15,9 @@ public class BikeTypeDAO {
 
         try {
             ResultSet rsBikeTypes = DBUtil.dbExecuteQuery(selectStmt);
-
             return getBikeTypeList(rsBikeTypes);
         } catch (SQLException e) {
             System.out.println("SQL select operation has failed: " + e);
-            // Return exception
             throw e;
         }
     }
@@ -38,7 +37,6 @@ public class BikeTypeDAO {
             );
             bikeTypeList.add(bikeType);
         }
-        // Return bikeTypeList (ObservableList of BikeTypes)
         return bikeTypeList;
     }
 }

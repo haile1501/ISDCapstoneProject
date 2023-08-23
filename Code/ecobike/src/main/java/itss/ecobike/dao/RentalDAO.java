@@ -1,9 +1,9 @@
-package itss.ecobike.models;
+package itss.ecobike.dao;
 
-import itss.ecobike.models.dto.RentalInfo;
+import itss.ecobike.entities.CreditCard;
+import itss.ecobike.entities.strategies.StandardRental;
+import itss.ecobike.entities.dto.RentalInfo;
 import itss.ecobike.utils.DBUtil;
-import itss.ecobike.utils.RentalPriceCalculator;
-import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

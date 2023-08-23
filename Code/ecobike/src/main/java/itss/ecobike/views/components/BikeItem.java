@@ -1,7 +1,7 @@
 package itss.ecobike.views.components;
 
-import itss.ecobike.models.Bike;
-import itss.ecobike.models.Electric;
+import itss.ecobike.entities.Bike;
+import itss.ecobike.interfaces.Electric;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -25,9 +25,9 @@ public class BikeItem {
             this.battery.setText("Battery: " + ((Electric) bike).getBatteryPercentage() + " %");
             this.licensePlate.setText("License plate: " + bike.getLicensePlate());
         } else {
-            this.duration.setText("");
-            this.battery.setText("");
-            this.licensePlate.setText("");
+            this.duration.setVisible(false);
+            this.battery.setVisible(false);
+            this.licensePlate.setVisible(false);
         }
     }
 }

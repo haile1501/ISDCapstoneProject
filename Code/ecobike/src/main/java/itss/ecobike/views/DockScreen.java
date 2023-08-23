@@ -1,9 +1,9 @@
 package itss.ecobike.views;
 
-import itss.ecobike.models.Bike;
-import itss.ecobike.models.BikeDAO;
-import itss.ecobike.models.Dock;
-import itss.ecobike.models.DockDAO;
+import itss.ecobike.controllers.BikeController;
+import itss.ecobike.controllers.DockController;
+import itss.ecobike.entities.Bike;
+import itss.ecobike.entities.Dock;
 import itss.ecobike.views.components.BikeItem;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -47,16 +48,16 @@ public class DockScreen {
     private Parent root;
 
     public void setData(int dockId) throws SQLException, ClassNotFoundException, IOException {
-        Dock dock = DockDAO.getDockById(dockId);
+        Dock dock = DockController.getDockInfo(dockId);
         dockName.setText(dock.getDockName());
         address.setText("Address: " + dock.getAddress());
         availableBikes.setText("Available bikes: " + dock.getAvailableBikes());
         emptyDockingPoints.setText("Empty docking points: " + (dock.getDockingPoints() - dock.getAvailableBikes()));
-        distance.setText("Distance: 2km");
-        walkingTime.setText("Walking time: 10 minutes");
+        distance.setText("Distance: " + dock.getDistance() + " m");
+        walkingTime.setText("Walking time: " + dock.getWalkingTime() + " minutes");
         area.setText("Area: " + dock.getArea() + " m²");
 
-        ObservableList<Bike> bikes = BikeDAO.getAvailableBikesInDock(dockId);
+        ObservableList<Bike> bikes = BikeController.getAvailableBikesInDock(dockId);
         for (Bike bike: bikes) {
             FXMLLoader loader = new FXMLLoader();
             String pathToFxml = "./src/main/resources/itss/ecobike/components/BikeItem.fxml";
@@ -72,25 +73,27 @@ public class DockScreen {
 
     @FXML
     private void initialize() {
-        back.setOnMouseClicked(mouseEvent -> {
-            FXMLLoader loader2 = new FXMLLoader();
-            String pathToFxml2 = "./src/main/resources/itss/ecobike/MainScreen.fxml";
-            URL dockItemURL2 = null;
-            try {
-                dockItemURL2 = new File(pathToFxml2).toURI().toURL();
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e);
-            }
-            loader2.setLocation(dockItemURL2);
-            try {
-                root = loader2.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            scene = new Scene(root);
-            stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        });
+        back.setOnMouseClicked(this::returnToMainScreen);
+    }
+
+    private void returnToMainScreen(MouseEvent mouseEvent) {
+        FXMLLoader loader2 = new FXMLLoader();
+        String pathToFxml2 = "./src/main/resources/itss/ecobike/MainScreen.fxml";
+        URL dockItemURL2 = null;
+        try {
+            dockItemURL2 = new File(pathToFxml2).toURI().toURL();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        loader2.setLocation(dockItemURL2);
+        try {
+            root = loader2.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        scene = new Scene(root);
+        stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -1,7 +1,7 @@
 package itss.ecobike.views.components;
 
-import itss.ecobike.models.Electric;
-import itss.ecobike.models.dto.RentedBike;
+import itss.ecobike.interfaces.Electric;
+import itss.ecobike.entities.dto.RentedBike;
 import itss.ecobike.views.ReturnBike;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,9 +47,9 @@ public class RentedBikeItem {
             this.battery.setText("Battery: " + ((Electric) bike.getBike()).getBatteryPercentage() + " %");
             this.licensePlate.setText("License plate: " + bike.getBike().getLicensePlate());
         } else {
-            this.duration.setText("");
-            this.battery.setText("");
-            this.licensePlate.setText("");
+            this.duration.setVisible(false);
+            this.battery.setVisible(false);
+            this.licensePlate.setVisible(false);
         }
         this.rentingTime.setText("Renting time: " + bike.getRentingTime() + " minutes");
         this.amount.setText("Amount: " + bike.getAmount() + " VND");

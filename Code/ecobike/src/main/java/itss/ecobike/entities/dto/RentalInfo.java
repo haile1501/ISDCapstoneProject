@@ -1,6 +1,6 @@
-package itss.ecobike.models.dto;
+package itss.ecobike.entities.dto;
 
-import itss.ecobike.models.RentalStrategy;
+import itss.ecobike.entities.strategies.RentalStrategy;
 
 public class RentalInfo {
     private int rentalId;

@@ -1,15 +1,15 @@
 package itss.ecobike.views;
 
-import itss.ecobike.controllers.DepositScreenController;
-import itss.ecobike.controllers.RentBikeController;
-import itss.ecobike.models.CreditCard;
-import itss.ecobike.models.Transaction;
+import itss.ecobike.controllers.BikeController;
+import itss.ecobike.controllers.NotifyScreenController;
+import itss.ecobike.controllers.TransactionController;
+import itss.ecobike.entities.CreditCard;
+import itss.ecobike.entities.Transaction;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -74,7 +74,7 @@ public class DepositScreen {
         loader.setLocation(bikeInfoScreenURL);
         root = loader.load();
         BikeInfoScreen bikeInfoScreen = loader.getController();
-        bikeInfoScreen.setData(RentBikeController.validateBarCode(barcode.getText()).get(0));
+        bikeInfoScreen.setData(BikeController.validateBarCode(barcode.getText()));
         scene = new Scene(root);
         stage = (Stage)barcode.getScene().getWindow();
         stage.setScene(scene);
@@ -90,39 +90,28 @@ public class DepositScreen {
                 expMonthCombo.getSelectionModel().getSelectedIndex() + 1,
                 expYearCombo.getValue()
         );
-        // use processDeposit from DepositScreenController
         Transaction transaction = null;
         try{
-            transaction = DepositScreenController.processDeposit(
+            transaction = TransactionController.processDeposit(
                     creditCard,
                     barcode.getText(),
                     depositFee.getText()
             );
         } catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error occurred while processing deposit");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+            NotifyScreenController.showErrorAlert("Error while processing deposit", e.getMessage());
             return;
         }
-        // show success alert
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText("Deposit successfully");
-        alert.setContentText("Transaction ID: " + transaction.getTransactionId() + "\n" +
+        NotifyScreenController.showSuccessAlert(
+                "Deposit successfully",
+                "Transaction ID: " + transaction.getTransactionId() + "\n" +
                         "Bike barcode: " + barcode.getText() + "\n" +
                         "Amount: " + transaction.getAmount() + "\n" +
                         "Transaction time: " + transaction.getTransactionTime() + "\n\n\n" +
-                        "Thank you! Please take your bike and enjoy your ride!"
-                );
-        alert.showAndWait();
-        // return to main screen
+                        "Thank you! Please take your bike and enjoy your ride!");
         returnToMainScreen();
     }
-
     @FXML
-    private void returnToMainScreen() throws SQLException, IOException, ClassNotFoundException {
+    private void returnToMainScreen() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         String pathToFxml = "./src/main/resources/itss/ecobike/MainScreen.fxml";
         URL mainScreenURL = new File(pathToFxml).toURI().toURL();
@@ -133,5 +122,4 @@ public class DepositScreen {
         stage.setScene(scene);
         stage.show();
     }
-
 }

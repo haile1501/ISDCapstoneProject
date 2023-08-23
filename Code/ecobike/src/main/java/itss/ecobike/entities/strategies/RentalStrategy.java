@@ -1,4 +1,4 @@
-package itss.ecobike.models;
+package itss.ecobike.entities.strategies;
 
 public interface RentalStrategy {
 

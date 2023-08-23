@@ -1,14 +1,16 @@
-package itss.ecobike.models;
+package itss.ecobike.entities;
 
+import itss.ecobike.dao.TransactionDAO;
 import itss.ecobike.exceptions.ExpiredCreditCard;
 import itss.ecobike.exceptions.InvalidCardInfo;
 import itss.ecobike.exceptions.NotEnoughBalanceException;
 import itss.ecobike.exceptions.NullCreditCard;
+import itss.ecobike.interfaces.Interbank;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class EcoBank implements Interbank{
+public class EcoBank implements Interbank {
     @Override
     public boolean isExpired(CreditCard creditCard){
         LocalDate currentLocalDate = LocalDate.now();
@@ -35,7 +37,6 @@ public class EcoBank implements Interbank{
     public Transaction payDeposit(CreditCard creditCard, double amount, int rentalId) throws Exception {
         creditCard.setBalance(creditCard.getBalance() - amount);
         int transaction_id = TransactionDAO.insertTransaction(rentalId, amount, "pay_deposit");
-        System.out.println(getBalance(creditCard));
         return TransactionDAO.getTransactionByTransactionId(transaction_id).get(0);
     }
 
@@ -43,7 +44,6 @@ public class EcoBank implements Interbank{
     public Transaction returnDeposit(CreditCard creditCard, double amount, int rentalId) throws Exception {
         creditCard.setBalance(creditCard.getBalance() + amount);
         int transaction_id = TransactionDAO.insertTransaction(rentalId, amount, "refund_deposit");
-        System.out.println(getBalance(creditCard));
         return TransactionDAO.getTransactionByTransactionId(transaction_id).get(0);
     }
 
@@ -51,7 +51,6 @@ public class EcoBank implements Interbank{
     public Transaction payRental(CreditCard creditCard, double amount, int rentalId) throws SQLException, ClassNotFoundException, NotEnoughBalanceException {
         creditCard.setBalance(creditCard.getBalance() - amount);
         int transaction_id = TransactionDAO.insertTransaction(rentalId, amount, "pay_rental");
-        System.out.println(getBalance(creditCard));
         return TransactionDAO.getTransactionByTransactionId(transaction_id).get(0);
     }
 

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="950.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itss.ecobike.views.MainScreen">
    <children>
@@ -14,22 +15,27 @@
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <FontAwesomeIconView fx:id="viewRentedBikes" fill="WHITE" glyphName="BICYCLE" layoutX="1089.0" layoutY="60.0" size="30" />
+            <FontAwesomeIconView fx:id="viewRentedBikesButton" fill="WHITE" glyphName="BICYCLE" layoutX="1089.0" layoutY="60.0" onMouseClicked="#viewRentedBikes" size="30" />
             <FontAwesomeIconView fx:id="exitButton" fill="WHITE" glyphName="SIGN_IN" layoutX="1189.0" layoutY="62.0" onMouseClicked="#exit" size="30" />
          </children>
       </Pane>
-      <Pane layoutX="336.0" layoutY="145.0" prefHeight="82.0" prefWidth="627.0">
+      <Pane layoutX="337.0" layoutY="156.0" prefHeight="82.0" prefWidth="633.0">
          <children>
             <TextField fx:id="searchInput" layoutX="-42.0" layoutY="28.0" prefHeight="26.0" prefWidth="303.0" promptText="search for docks" />
-            <Button fx:id="searchButton" layoutX="274.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #00a13f;" text="Search" textFill="WHITE" />
+            <Button fx:id="searchButton" layoutX="274.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleSearchDock" style="-fx-background-color: #00a13f;" text="Search" textFill="WHITE" />
             <TextField fx:id="barcode" layoutX="381.0" layoutY="28.0" prefHeight="26.0" prefWidth="217.0" promptText="scan bike barcode" />
             <Button fx:id="scanButton" layoutX="613.0" layoutY="28.0" mnemonicParsing="false" onAction="#processScanBarcode" style="-fx-background-color: #00a13f;" text="Scan" textFill="WHITE" />
          </children>
       </Pane>
-      <ScrollPane layoutX="295.0" layoutY="277.0" prefHeight="539.0" prefWidth="709.0">
+      <ScrollPane layoutX="228.0" layoutY="277.0" prefHeight="500.0" prefWidth="850.0">
          <content>
             <VBox fx:id="docksContainer" prefHeight="0.0" prefWidth="0.0" />
          </content>
       </ScrollPane>
+      <Label layoutX="228.0" layoutY="121.0" text="Welcome to EcoBike">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

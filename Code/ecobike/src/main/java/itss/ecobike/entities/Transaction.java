@@ -1,7 +1,6 @@
-package itss.ecobike.models;
+package itss.ecobike.entities;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * A record of a transaction, including ID of the transaction, credit card number of the card performing the transaction,

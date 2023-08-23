@@ -1,11 +1,14 @@
-package itss.ecobike.models;
+package itss.ecobike.dao;
 
-import itss.ecobike.models.dto.RentedBike;
+import itss.ecobike.interfaces.Electric;
+import itss.ecobike.entities.Bike;
+import itss.ecobike.entities.BikeFactory;
+import itss.ecobike.entities.BikeType;
+import itss.ecobike.entities.dto.RentedBike;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import itss.ecobike.utils.DBUtil;
 
-import java.lang.module.ResolvedModule;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

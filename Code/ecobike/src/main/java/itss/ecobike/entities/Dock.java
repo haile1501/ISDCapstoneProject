@@ -1,4 +1,4 @@
-package itss.ecobike.models;
+package itss.ecobike.entities;
 
 public class Dock {
     private int id;
@@ -54,5 +54,13 @@ public class Dock {
 
     public int getAvailableBikes() {
         return availableBikes;
+    }
+
+    public int getDistance() {
+        return (int)(Math.random() * 50);
+    }
+
+    public int getWalkingTime() {
+        return (int)(Math.random() * 10);
     }
 }
